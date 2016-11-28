@@ -1,0 +1,37 @@
+\chapter{Metodyka testów i pomiarów}
+
+ \info{tutaj dobrze by było, żeby wybrane zostały testy reprezentujące różne grupy ataków DDoS klasyfikacji wprowadzonej w 4.4}
+\section{Testy wolumetryczne}
+ 
+6.1.1.	 Ataki proste typu TCP-SYN flood,  HTTP(S) flood, ICMP flood, TCP OOS, bądź mix
+6.1.2.	 Ataki typu reflected, DNS, NTP – wymagają zbudowania bądź zasymulowania architektury
+6.1.3.	 Zawsze jakiś procent ruchu jest ruchem legalnym
+\section{Analiza testów wolumetrycznych}
+
+6.2.1.	 Poprawność mitygacji (czy ruch legalny dociera, albo jaki %)
+6.2.2.	 Czas mitygacji od rozpoczęcia ataku
+6.2.3.	 Pojemność ruchowa mitygacji i ruchu legalnego w stosunku do dokumentacji, bądź wartości teoretycznej, mierzona w Gbps, PPS
+6.2.4.	 Pojemność jednoczesnych sesji HTTP, SSL
+6.2.5.	 Pomiar opóźnień jeżeli mitygacja jest aktywna
+6.2.6.	 
+6.3.	Testy fuzzingowe* - jeżeli starczy czasu
+6.3.1.	 DefensePro ma Anomaly Engine, można sprawdzić
+
+
+\chapter{Architektura labu}
+
+7.1.	Radware DefensePro w trybie inline 
+7.2.	Radware DefenseFlow (BGP FlowSpec)
+7.3.	Radware DefensePro + DefenseFlow (sygnalizacja własnościowa)
+7.4.	Arbor Networks
+(brak rysunku)
+
+7.5.	FastNetMon + HAProxy (opensource only) 
+  https://fastnetmon.com/
+
+7.6.	Flowmon* - jest darmowy eval
+
+\section{Widok trasy jednego requestu (tylko w jedną stroną) w warstwie L2}
+
+W górnym rzędzie znajdują się hosty wirtualizowane (najprawdopodobniej ESXi), w dolnym rzędzie applience fizyczne. Pokazuje to z jakim overhead mamy do czynienia. 
+Koszt trasy pomiędzy hostami na wirtualizatorze jest możliwy do pominięcia (operacje w RAMie), natomiast link pomiędzy ESXi i appliancami trzeba pomyśleć o jakimś LACPie może

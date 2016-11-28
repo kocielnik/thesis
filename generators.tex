@@ -1,0 +1,83 @@
+\chapter{Przegląd generatorów ruchu sieciowego}
+\section{Generatory sprzętowe}
+
+charakterystyka, przykłady
+\begin{itemize}
+\item Spirent
+\item Ixia
+\end{itemize}
+
+
+
+
+
+\section{Generatory programowe w Linuksie}
+
+\subsection{Metody generowania wielkowolumenowego ruchu}
+
+Opis procesu generowania pojedynczego pakietu w Linuksie \\
+Po co robić memory zero-copy \\
+Szybkie vs wolne backendy: SOCKET\_RAW, libpcap, netmap, PF\_RING, AF\_PACKET \\
+
+\subsection{Funkcjonalności różnych generatorów/frameworków}
+Badanie: netsniff-ng, scapy, PKTGEN)
+
+\subsection{Wyspecjalizowane generatory}
+ JMeter
+\subsection{Fuzzery}
+
+Na tą chwilę brak wiedzy/doświadczenia z tego typu programami
+
+
+
+
+\section{Generatory – analiza komparatywna}
+
+ (tabelka zalety-wady)
+ 
+	Funkcjonalność vs Wydajność vs Cena
+	
+\begin{center}
+  \begin{tabular}{ | l || c | c | c |}
+    \hline
+    Metoda & Funkcjonalność & Wydajność & Cena \\
+    \hline \hline
+    A & 15 & 15 & 1\\
+    \hline
+    B & 10 & 15 & 2 \\
+    \hline
+    C & 12 & 13 & 3\\
+    \hline
+    D & 110 & 230 & 4\\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section{Metody analizy ruchu sieciowego}
+\improvement{lepsza klasyfikacja}
+\subsection{Metody opierające się na (kopii) ruchu}
+\subsubsection{Urządzenie in-line}
+\paragraph{Kopia ruchu (port-mirroring)}
+\paragraph{Backendy: netmap, PF\_RING, pcap}
+\subsubsection{Metody statystyczne}
+\paragraph{Flowy: sFlow, NetFlow}
+\paragraph{SNMP/Netconf}
+\subsection{Analiza komparatywna (tabelka)}
+
+\begin{center}
+  \begin{tabular}{ | l || c | c | }
+    \hline
+    \multirow{2}{*}{Algorytm} & \multicolumn{2}{|c|}{Czas symulacji [sek]} \\
+     & implementacji X & implementacji Y \\
+    \hline \hline
+    A & 15 & 15 \\
+    \hline
+    B & 10 & 15 \\
+    \hline
+    C & 12 & 13 \\
+    \hline
+    D & 110 & 230 \\
+    \hline
+  \end{tabular}
+\end{center}
+

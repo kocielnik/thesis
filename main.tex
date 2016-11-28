@@ -1,0 +1,68 @@
+\chapter{Wprowadzenie do ataków odmowy usługi i istniejące sposoby przeciwdziałania}
+
+ \info{w tym rodziale ma się znaleźć także przegląd literatury naukowej związanej z DDoS i obroną i na tym tle pokazanie o czym będzie Pana praca}
+ 
+\section{Motywy/powody ataków}
+\subsection{Straty wizerunkowe, odpływ klientów, okupy, kasa dla botmasterów}
+\section{Możliwe skutki ataków}
+\subsection{Kilka przykładów historycznych medialnych ataków}
+\section{Charakterystyka ataków za rok 2016 w sieci OPL}
+\begin{verbatim}
+4.3.1.	Średnie natężenie
+4.3.2.	Szczytowy ruch
+4.3.3.	Średnia długość trwania
+4.3.4.	Szczytowa długość trwania
+4.3.5.	Procentowo protokoły
+4.3.6.	Atakujący wg kraju
+4.3.7.	Inne – zobaczymy co się da wyciągnąć (więcej niż raport certu)
+4.3.8.	Być może porównanie do 2015 i wyznaczenie trendu  \info{tak, porównanie to dobry kierunek}
+\end{verbatim}
+
+
+
+\section{Klasyfikacja ataków}
+Nie mogę opisać wszystkich ataków które są na świecie, trzeba znaleźć kryterium stopu – 
+\info{tu oczywiście trzeba dobrać odpowiednie kryterium, żeby najlepiej to odpowiadało tym atakom, które będą przeprowadzane w części eksperymentalnej pracy dyplomowej.}
+Na razie lista jest wstępna, pisana z pamięci. Trzeba pamietac o multivector attacks 
+\begin{enumerate}
+\item Wg źródła
+	\begin{enumerate}
+		\item Strumieniowe - DoS
+		\item Rozproszone (Distributed) - DDoS
+		\item Rozproszone (Distributed) - DDoS
+		\item Odbite (Reflected) – DRDoS
+		\item Wzmocnione (Amplified) – DRADoS
+	\end{enumerate}
+\item Wg warstwy protokołu
+\begin{verbatim}
+4.4.2.1.	L3:
+4.4.2.1.1.	GRE
+4.4.2.2.	L4:
+4.4.2.2.1.	TCP flood flagi: SYN, ACK, SYN-ACK, PSH, FIN, FRAG
+4.4.2.2.2.	UDP flood, UDP fragment
+4.4.2.2.3.	ICMP flood
+4.4.2.2.4.	TCP out of state
+4.4.2.3.	L6
+4.4.2.3.1.	THC-SSL-DoS (HTTPS renegotiation flood)
+4.4.2.4.	L7
+4.4.2.4.1.	HTTP
+4.4.2.4.1.1.	Flood (GET/POST)
+4.4.2.4.1.2.	Low and slow
+4.4.2.4.2.	SNMP, DNS+DNSSEC, NTP
+\end{verbatim}
+\end{enumerate}
+
+\section{Mitygacja ataków DDoS }
+\improvement{tutaj też można wprowadzić jakąś klasyfikację}
+\subsection{Metody}
+
+Tryb in-line\\
+BGP Flowspec\\
+Mitgacja w cloudzie / scrubbing center
+\subsection{Rozwiązania na rynku}
+
+Radware DefensePro + DefenseFlow\\
+Arbor\\
+FastNetMon \\
+...
+
