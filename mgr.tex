@@ -1,0 +1,304 @@
+% arara: lualatex: { shell: yes, options: "-interaction nonstopmode -halt-on-error -file-line-error" }
+% arara: biber
+% arara: makeglossaries
+% arara: lualatex: { shell: yes, options: "-interaction nonstopmode -halt-on-error -file-line-error" }
+% arara: lualatex: { shell: yes, options: "-interaction nonstopmode -halt-on-error -file-line-error" }
+
+% mgr.tex - root top
+% version: 0.1
+% TODO:
+% - pierwsza strona - podmienic obrazki
+% - zyciorys?
+% - flagi draftu
+% - impnattypo
+
+\documentclass{eitidypl}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\rokegz{2017 r.}
+\rokak{2016/2017}
+\semestr{Lato}
+\stopien{II}
+\kierunek{Telekomunikacja}
+\instytut{telekomunikacji}
+\jednostka{Instytut Telekomunikacji}
+\specjalnosc{Telekomunikacja}
+\typ{magisterska}
+\autor{Jan Kowalski}
+\nralbumu{123456}
+\adresa{ul. Puławska 5/12}
+\adresb{02-111 Warszawa}
+\foto{foto.png}
+\dataurodzenia{01 grudnia 1234r.}
+\datarozpoczecia{1. stycznia 2000r.}
+\opiekun{dr hab. inż. ...}
+\tytul{Tytul twojej pracy}
+\tytulen{English title}
+
+\zyciorys{Urodziłem się 1 stycznia 1981r. w Warszawie...\\[3mm]
+abc...\\[3mm]
+def...\\[3mm]
+Poniżej podpis:}
+
+\streszczenie{Polskie streszczenie pracy...\\[3mm]
+Dalsza część streszczenia...\\[3mm]
+I coś jeszcze}
+
+\streszczenieen{English abstract...\\[3mm]
+Something more...\\[3mm]
+And something else...}
+
+\slowakluczowe{{słowa} {kluczowe} {pracy}}
+\slowakluczoween{english, keywords}
+
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{refcount}
+%fonts
+%\usepackage{times}
+%\usepackage{lmodern} %lm
+%computer modern ?
+%http://tex.stackexchange.com/questions/24994/switching-back-to-computer-modern-within-xelatex
+
+%caption – Customising captions in floating environments
+%http://www.peteryu.ca/tutorials/publishing/latex_captions#set_caption_label_numbering_style
+\ifthenelse{\boolean{strict}}{
+\usepackage[format=hang,labelformat=simple,labelsep=colon,justification=raggedright,{font=footnotesize,sf},singlelinecheck=off]{caption}
+}{
+\usepackage[format=hang,labelformat=simple,labelsep=colon,justification=raggedright,{font=footnotesize},singlelinecheck=off]{caption}
+
+}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
+\usepackage{float}
+%mozna rozluznic above, below
+\usepackage[section]{placeins}
+%Set space between lines - should be default
+%\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%
+
+
+%tabelki
+%Create tabular cells spanning multiple rows
+%\usepackage{multirow}
+\usepackage{multirow}
+\usepackage{tabularx}
+%array – Extending the array and tabular environments
+\usepackage{array}
+
+%%%%%%%%%%%%%%%%
+%http://tex.stackexchange.com/questions/191709/biblatex-biber-babel-configuration-for-polish-language-and-style-of-bibliog
+\usepackage[
+    backend=biber,
+    style=authoryear-icomp, %do weryfikacji
+    sortlocale=auto, %pl_PL
+    natbib=true,
+    url=false, % @online is always printed
+    doi=true, %The Digital Object Identifier of the work.
+    eprint=false, %3.12.7 Electronic Publishing Information
+    hyperref=true
+]{biblatex}
+\addbibresource{biblatex-examples.bib}
+
+%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\usepackage{enumitem}	% enumitem.pdf
+%\setlist{listparindent=\parindent, parsep=\parskip} % potrzebuje enumitem
+
+\PassOptionsToPackage{hyphens}{url} %break on hyphen http://tex.stackexchange.com/questions/49788/hyperref-url-long-url-with-dashes-wont-break
+
+%%%%%%%%%%%%%%
+
+%advanced hyperref
+\usepackage{bookmark}
+%package navigator - advaced pdf
+\usepackage{listings}
+\usepackage[autostyle]{csquotes}
+%\DeclareQuoteAlias{croatian}{polish}
+%Package csquotes Warning: No style for language 'polish'.
+%(csquotes)                Using fallback style on input line 207.
+\DeclareQuoteStyle[quotes]{polish}
+  {\quotedblbase}
+  {\textquotedblright}
+  [0.05em]
+  {\quotesinglbase}
+  {\fixligatures\textquoteright}
+\DeclareQuoteAlias[quotes]{polish}{polish}
+%\DeclareQuoteOption{polish}
+%http://tex.stackexchange.com/questions/191709/biblatex-biber-babel-configuration-for-polish-language-and-style-of-bibliog
+
+%http://tex.stackexchange.com/questions/220395/why-does-hyperref-complain-about-token-not-allowed-in-a-pdf-string-in-my-gloss
+\pdfstringdefDisableCommands{\let\textpolish\@firstofone}
+\hypersetup{
+    pdfencoding=auto,
+    pdfauthor={\getautor},
+    pdftitle={\gettytul},
+    pdfsubject={Praca magisterska},
+    pdfkeywords={\getslowakluczowe},
+    colorlinks=true,
+    %hidelinks
+    }
+%http://tex.stackexchange.com/questions/18924/pdftex-warning-ext4-destination-with-the-same-identifier-nam-epage-1-has
+%%%%%%%%%%%%%%%
+
+\input{glossaries.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%NOTES
+% http://tex.stackexchange.com/questions/9796/how-to-add-todo-notes
+
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+%\usepackage[dvipsnames]{xcolor}  % Coloured text etc.
+% earlier loaded
+%\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny,obeyFinal]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+% TODO http://tex.stackexchange.com/questions/5180/how-can-i-get-todonotes-in-the-left-margin
+
+%\usepackage{tikz}
+\usepackage[printwatermark]{xwatermark}
+\newsavebox\mybox
+\savebox\mybox{\tikz[color=red,opacity=0.3]\node{draft};}
+\newwatermark*[
+  allpages,
+  angle=45,
+  scale=6,
+  xpos=-20,
+  ypos=15
+]{\usebox\mybox}
+
+\usepackage{lipsum}
+
+%\todo[inline]{The original todo note withouth changed colours.\newline Here's another line.}
+%\unsure{Is this correct?}\unsure{I'm unsure about also!}
+%\change{Change this!}
+%\info{This can help me in chapter seven!}
+%\improvement{This really needs to be improved!\newline\newline What was I thinking?!}
+
+%\%thiswillnotshow{This is hidden since option `disable' is chosen!}
+%\improvement[inline]{The following section needs to be rewritten!}
+%\lipsum[11]
+%\newpage
+%\listoftodos[Notes]
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%prevent hyphenation of words on more than two consecutive lines
+% avoid hyphenation points that would isolate a single letter
+%\usepackage[draft,nosingleletter]{impnattypo}
+%\usepackage[draft,nosingleletter,hyphenation,rivers]{impnattypo} %TODO
+%wdowy i bękarty
+%sprawdzic to defaultlines TODO
+\usepackage[defaultlines=4,all]{nowidow}
+
+\pagestyle{fancy}
+\begin{document}
+
+% Polecenie \makeinfo produkuje karte informacyjna studenta.
+% Sklada sie ja w dziekanacie razem z praca, ale NIE jest
+% ona czescia pracy i nie powinna sie w niej znajdowac!
+% Po wydrukowanie jednej karty informacyjnej mozna to polecenie
+% usunac i drukowac tylko sama prace.
+%\makeinfo
+
+% 1 strona tytulowa
+\pagenumbering{gobble}
+%\thispagestyle{empty}
+\maketitle
+
+% 2 opcjonalnie karta pracy dyplomowej, jeżeli wydział stosuje
+%\makeinfo
+
+% draft git reflog
+\section*{git last changes}
+\thispagestyle{empty}
+DRAFT: Ta strona będzie drukowane na drugiej karty tytularnej i nie ma na niej numeracji
+\lstinputlisting{lastChanges.tex}
+
+% 3 streszczenie pracy
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{1}
+\makeabstracts
+
+% 4 oswiadczenie o autorstwie pracy z USOS
+\cleardoublepage
+%\thispagestyle{empty}
+Oswiadczenie o autorstwie pracy z USOS - do podmiany
+% \newpage
+
+% 5 oswiadczenie o udzeleniu licencji - opcjonalne
+
+% 6 spis tresci
+\cleardoublepage
+\pagestyle{fancy}
+\tableofcontents
+
+% 7 kolejne rodzialy
+\cleardoublepage
+\pagestyle{fancy}
+%\setcounter{page}{1}
+\pagenumbering{arabic}
+\input{content.tex}
+
+
+% 8 bibliografia
+%\bibliographystyle{alpha}
+%\bibliographystyle{plain}
+%\bibliography{mgr}
+\cleardoublepage
+%\setcounter{page}{1}
+%\pagenumbering{roman}
+\label{bibliography}
+\printbibliography[heading=bibintoc]
+
+% 9 wykaz symboli i skrotow
+\clearpage
+%\printglossary
+%\printglossaries
+%\renewcommand{\glossarypreamble}{}
+\printglossary[type=\acronymtype,title=Wykaz skrótów]
+\printglossary[type=main]
+
+% 10 spis rysunkow
+\clearpage\phantomsection
+\label{listoffigures}
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+
+% 11 spis tabel
+\clearpage\phantomsection
+\label{listoftables}
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+
+
+% 12 spis zalacznikow
+% 13 zalaczniki
+\clearpage\phantomsection
+\input{appendix.tex}
+\addcontentsline{toc}{chapter}{\listappendicesname}
+
+%\addtocontents{toc}{\protect\contentsline{chapter}{\listfigurename}{\getpagerefnumber{listoffigures}}{\indexname}}
+%\addtocontents{toc}{\protect\contentsline{chapter}{\listfigurename}{\getpagerefnumber{bibliography}}{}}
+%\addtocontents{toc}{\protect\contentsline{chapter}{\listtablename}{\getpagerefnumber{listoftables}}{}}
+%\addtocontents{toc}{\protect\contentsline{chapter}{\listappendicesname}{\getpagerefnumber{listofappendices}}{}}
+%http://tex.stackexchange.com/questions/321132/add-list-of-figures-tables-etc-on-different-position-in-table-of-contents
+%http://tex.stackexchange.com/questions/194720/hyperref-in-toc-without-page-number
+
+
+\end{document}
