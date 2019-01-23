@@ -1,13 +1,37 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eitidypl}[2017/01/20 v0.2 Praca dyplomowa EiTI Nowe Wymogi by Mikolaj Kowalski cmosqt@gmail.com based on Jakub Schmidtke: sjakub@gmail.com]
-% for ref: https://en.wikibooks.org/wiki/LaTeX/Internationalization#Polish
+\ProvidesClass{eitidypl}[2019/01/23 Praca dyplomowa WEiTI (nowe wymogi)]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%CONFIG
+% Dokument przygotowany według następujących wymagań:
+% 
+% 1. Polskie ogólne zasady składania tekstów [^wiki_internalization],
+% 2. Zasady składu tekstów w języku polskim [^zasady],
+% 3. Nowe wymogi dla prac składanych na Politechnice Warszawskiej [^wym_2017].
+
+%%% LICENCJA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Copyright 2019 Patryk Kocielnik
+% Copyright 2018 Mikołaj Kowalski <cmosqt@gmail.com>
+% Copyright 2017 Jakub Schmidtke <sjakub@gmail.com>
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+%%% CONFIG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \RequirePackage{ifthen}
-\newboolean{strict}
+
+\newboolean{@strict}
+\setboolean{@strict}{false}
+\DeclareOption{strict}{\setboolean{@strict}{true} \typeout{Using strict mode!}}
+
 \newboolean{draft}
-\setboolean{strict}{false}
+\setboolean{draft}{false}
+\DeclareOption{draft}{\setboolean{@draft}{true} \typeout{Using draft mode!}}
+
+\ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@baseclass{report}
@@ -22,28 +46,12 @@
 %\SetWatermarkLightness{0.9}
 %\SetWatermarkColor[rgb]{0.8,0,0}
 
-
-
-%inputenc jest niedozwolony w lualatex
-%\usepackage[utf7]{inputenc}
-%\usepackage[T0,OT3]{fontenc}
-%\usepackage[T0]{fontenc}
-
-%babel
-%%\usepackage[polish]{babel}
-%%\usepackage{polski}
-% or polyglossia
-\usepackage{polyglossia}
-\setmainlanguage{polish}
-\setotherlanguage{english}
-
 \RequirePackage{hyphenat}
+%\RequirePackage[pdfpagelabels]{hyperref}
 \RequirePackage{hyperref}
 \RequirePackage{url}
 
-
-%lualatex only
-%http://tex.stackexchange.com/questions/99699/lualatex-use-or-dont-use-classical-font-packages
+% LuaLaTeX only [@stackoverflow_lualatex_2013].
 \usepackage{fontspec}
 
 \RequirePackage[defaultsans]{opensans}
@@ -66,13 +74,11 @@
 \newfontfamily{\osb}[BoldFont={* Bold}]{Open Sans}
 \newfontfamily{\osbi}[BoldItalicFont={* Bold Italic}]{Open Sans}
 
-
-
-%polishstyle
-\renewcommand\thechapter{ \arabic{chapter}.}
-\renewcommand\thesection{\arabic{chapter}.\arabic{section}.}
-\renewcommand\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}.}
-\renewcommand\thesubsubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+% polishstyle
+%\renewcommand\thechapter{ \arabic{chapter}.}
+%\renewcommand\thesection{\arabic{chapter}.\arabic{section}.}
+%\renewcommand\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}.}
+%\renewcommand\thesubsubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
 
 %rozdzialy 1 poziomu od nowej strony
 %rozdzialy 1 poziomu 14pt - \LARGE -17.28
@@ -83,41 +89,41 @@
 % interlinia 1.15 - setspace, linespread
 %http://tex.stackexchange.com/questions/30073/why-is-the-linespread-factor-as-it-is
 
-
-\usepackage{titlesec}
-\ifthenelse{\boolean{strict}}{
-
-\titleformat{\chapter}[hang] %display is default
-  {\osb\LARGE}
-	{\chaptertitlename \thechapter}{17pt}{\LARGE}
-%\titlespacing*{\chapter}
-%  {0pt}{50pt}{40pt}
-\titleformat{\section}[hang]
-  {\osb\Large}
-	{\thesection}{1em}{\Large}
-\titleformat{\subsection}[hang]
-  {\osb\large}
-	{\thesubsection}{1em}{\large}
-\titleformat{\subsubsection}[hang]
-  {\osb\large}
-	{\thesubsubsection}{1em}{\large}
-}{ %else
-\titleformat{\chapter}[hang] %display is default
-  {\bfseries\LARGE}
-	{\chaptertitlename \thechapter}{17pt}{\LARGE}
-%\titlespacing*{\chapter}
-%  {0pt}{50pt}{40pt}
-\titleformat{\section}[hang]
-  {\bfseries\Large}
-	{\thesection}{1em}{\Large}
-\titleformat{\subsection}[hang]
-  {\bfseries\large}
-	{\thesubsection}{1em}{\large}
-\titleformat{\subsubsection}[hang]
-  {\large}
-	{\thesubsubsection}{1em}{\large}
-
-}
+% PK: COMMENTED OUT MANUALLY
+%\usepackage{titlesec}
+%\ifthenelse{\boolean{strict}}{
+%
+%\titleformat{\chapter}[hang] %display is default
+%  {\osb\LARGE}
+%	{\chaptertitlename \thechapter}{17pt}{\LARGE}
+%%\titlespacing*{\chapter}
+%%  {0pt}{50pt}{40pt}
+%\titleformat{\section}[hang]
+%  {\osb\Large}
+%	{\thesection}{1em}{\Large}
+%\titleformat{\subsection}[hang]
+%  {\osb\large}
+%	{\thesubsection}{1em}{\large}
+%\titleformat{\subsubsection}[hang]
+%  {\osb\large}
+%	{\thesubsubsection}{1em}{\large}
+%}{ %else
+%\titleformat{\chapter}[hang] %display is default
+%  {\bfseries\LARGE}
+%	{\chaptertitlename \thechapter}{17pt}{\LARGE}
+%%\titlespacing*{\chapter}
+%%  {0pt}{50pt}{40pt}
+%\titleformat{\section}[hang]
+%  {\bfseries\Large}
+%	{\thesection}{1em}{\Large}
+%\titleformat{\subsection}[hang]
+%  {\bfseries\large}
+%	{\thesubsection}{1em}{\large}
+%\titleformat{\subsubsection}[hang]
+%  {\large}
+%	{\thesubsubsection}{1em}{\large}
+%
+%}
 
 \RequirePackage{tocloft}
 \renewcommand{\cfttoctitlefont}{\bfseries\LARGE}
@@ -128,6 +134,7 @@
 % automatic detection for luatex
 %\PassOptionsToPackage{final}{graphicx}
 %\RequirePackage{graphicx}
+\usepackage{graphicx}
 \graphicspath{{images/}}
 
 
@@ -135,10 +142,11 @@
 %\RequirePackage[]{xcolor}
 \PassOptionsToPackage{luatex,dvipsnames,table,hyperref}{xcolor}
 
-
-
-
-
+%\addto\captionspolish{
+%    % Second argument is singular, third is plural
+%    \crefname{rysunek}{rys.}{rys.}
+%    \Crefname{Rysunek}{Rys.}{Rys.}
+%}
 
 \usepackage{fancyhdr}
 \fancyhf{} % clear all header and footers
@@ -164,7 +172,24 @@
 %\usepackage[bindingoffset=10mm, inner=20mm, top=25mm, bottom=25mm]{geometry}
 \usepackage[bindingoffset=10mm, inner=20mm, top=25mm, bottom=25mm,includehead]{geometry}
 
-% Ponizej moze kontrowersyjne ustawienie, ale bardziej mi sie podoba
+% Standardowe wcięcia o rozmiarze jednego firetu, zob. [^zasady].
+\setlength{\parindent}{1em}
+
+% Potrzebne do kompilacji z Pandoc.
+\usepackage{listings}
+
+% Zakładki ze strukturą dokumentu w wyjściu PDF.
+\usepackage{bookmark}
+\setcounter{tocdepth}{3}
+
+% Numerowanie sekcji.
+\setcounter{secnumdepth}{2}
+
+% Wytłuszczona czcionka w etykietach figur.
+\usepackage[labelfont=bf]{caption}
+
+% Ponizej moze kontrowersyjne ustawienie, ale wydaje się 
+% wprowadzać wyraźnie lepszą estetykę:
 % brak wciec w pierwszych liniach paragrafu, za to wieksze
 % odstepy w pionie miedzy paragrafami.
 % Troche nie po polsku, ale wiecej ``powietrza'' jest w pracy.
@@ -173,6 +198,7 @@
 %\intextsep=10mm
 
 \renewcommand\maketitle{
+    \pagenumbering{Alph}
 	\begin{titlepage}
   \thispagestyle{empty}
 	\noindent
@@ -200,6 +226,7 @@
 	{\osl Warszawa, \@rokegz}\\
 	\end{center}
 	\end{titlepage}
+    \pagenumbering{arabic}
 	\setcounter{footnote}{0}
 }
 
@@ -333,16 +360,35 @@
 }
 
 \newcommand\makededykacja{
-\begin{titlepage}
-	\noindent
-	\vspace{15cm}
-	\flushright
-	\begin{minipage}{11cm}
-			Serdecznie dziękuję XyZ.\\
+\clearpage
 
-			Pragnę także ...\\
-		\end{minipage}
-\end{titlepage}
+\thispagestyle{empty}
+\null\vfill\vfill
+
+\begin{center}
+$S\; =\; \int _{0}^{T}L\, \left(q\; ,\; \dot{q}\right) \; d t\quad$
+\end{center}
+
+\newlength\longest
+\settowidth\longest{\huge\itshape przedwczesna optymalizacja jest}
+\begin{center}
+\parbox{\longest}{%
+  \raggedright{\huge\itshape%
+  Zrób jedną rzecz \\
+  i zrób ją dobrze. \\
+  (...) \\
+  Przedwczesna optymalizacja \\
+  jest źródłem wszelkiego zła.\par\bigskip
+  }
+  \raggedleft\Large\MakeUppercase{Doug McIlroy i C.A.R. Hoare}\par%
+}
+\end{center}
+
+\begin{center}
+$i\gamma^\mu\delta_{mu}\psi(x) = 0$
+\end{center}
+
+\vfill%\vfill
 }
 
 \def\jednostka#1{\gdef\@jednostka{#1}}
@@ -423,5 +469,9 @@
 \def\specjalnosc#1{\gdef\@specjalnosc{#1}}
 \def\@specjalnosc{???\ClassError{eitidypl}{Brak specjalnosci}\@ehc}
 
-
 \ProcessOptions\relax
+\endinput
+
+% [^zasady]: ["Zasady składania tekstów w języku polskim"](https://studia.elka.pw.edu.pl/file/18Z/103B-xxxxx-MSP-SDM2/priv/Tylko_dla_II_grupy_201-203/)
+% [^wiki_internationalization]: [Internationalization](https://en.wikibooks.org/wiki/LaTeX/Internationalization#Polish)
+% [^wym_2017]: [Nowe wymogi edytorskie prac dyplomowych składanych od dnia 1 stycznia 2017 r.](http://www.elka.pw.edu.pl/Aktualnosci/Komunikaty-Dziekanatu/Nowe-wymogi-edytorskie-prac-dyplomowych-skladanych-od-dnia-1-stycznia-2017-r)
