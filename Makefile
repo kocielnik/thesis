@@ -35,7 +35,7 @@ ed:
 show:
 	@xdg-open $(out)
 test:
-	@validation/test_essay.py
+	@validation/test_essay.py ../$(out)
 ship:
 	cp $(out) $(shipdir)/$(name)
 clean:

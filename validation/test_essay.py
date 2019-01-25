@@ -9,19 +9,26 @@ import readline
 
 script_path = os.path.dirname(os.path.realpath(__file__))
 
-def file_name():
+parser = argparse.ArgumentParser(description='Give file name.')
+parser.add_argument('file', help='File to be tested')
+args = parser.parse_args()
 
-    parser = argparse.ArgumentParser(description='Give file name.')
-    parser.add_argument('file_name', metavar='S', type=string, nargs='+',
-                    help='file name')
+def file_name(args):
 
-    args = parser.parse_args()
+    f = args.file
+
+    return f
 
 def count_pages():
 
-    filename = "out.pdf"
+    filename = file_name(args)
+    #filename = "out.pdf"
 
-    file_object = open(filename, 'rb')
+    file_path = os.path.join(script_path, filename)
+
+    #print(file_path)
+
+    file_object = open(file_path, 'rb')
 
     pdf = PyPDF2.PdfFileReader(file_object)
 

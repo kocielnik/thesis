@@ -1,9 +1,13 @@
-# Szablon pracy magisterskiej dla wydziału EiTi Politechniki Warszawskiej
+# Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
+
+*Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
 
 Oferuje:
 
 1. Szablon z formatowaniem gotowym do użycia w pracy magisterskiej,
-2. Proste użycie poprzez włączenie go do nagłówka pliku `.tex` z treścią pracy.
+2. Proste użycie poprzez:
+  - włączenie go do nagłówka pliku `.tex` z treścią pracy, albo
+  - dołączenie *do* niego treści w formacie Markdown.
 
 **Nie** oferuje (i na razie nie powinien oferować):
 
@@ -56,6 +60,19 @@ Opcje klasy
 
 - `strict` - tylko czcionki bezszeryfowe, jak w rozporządzeniu (może nie działać),
 - `draft` - znak wodny "draft" na każdej stronie.
+
+Bonus: TDD (TDW)
+-----------------------
+
+> Write now, edit later.
+
+W katalogu `validation` znajduje się plik `goal`.
+
+Można w nim umieścić docelową liczbę stron do napisania w pracy.
+
+Sprawdzenia dokonujemy komendą `make test`.
+
+*For best effects, use regularly in small doses.*
 
 Credits 
 -------
