@@ -1,0 +1,18 @@
+\drafttrue
+
+\maketitle
+
+\makeinfo
+
+\ifdraft
+    \section*{Najnowsze zmiany w projekcie}
+    \thispagestyle{empty}
+    \lstinputlisting{whatsnew.tex}
+\else
+    \makededykacja
+\fi
+
+\makeabstracts
+
+\tableofcontents
+

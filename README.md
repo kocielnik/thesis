@@ -1,26 +1,65 @@
-# Szablon pracy magisterskiej na wydziale EiTi PW
+# Szablon pracy magisterskiej dla wydziału EiTi Politechniki Warszawskiej
 
-**Ostrzeżenie: praca nie została jeszcze obrniona, używasz na własną odpowiedzialność**
+Oferuje:
+
+1. Szablon z formatowaniem gotowym do użycia w pracy magisterskiej,
+2. Proste użycie poprzez włączenie go do nagłówka pliku `.tex` z treścią pracy.
+
+**Nie** oferuje (i na razie nie powinien oferować):
+
+1. Szablonu dla pracy *inżynierskiej*,
+2. Czegokolwiek ponad to, co oferuje.
 
 Wymagania do kompilacji
 -----------------------
 
-LuaLaTex, texlive-full...
+Pandoc i LuaLaTex.
 
-Howto
------
+Korzystanie
+--------------
 
-```
-arara mgr.pdf
-```
+1. `sudo ./configure`,
+2. `make`,
+3. `make show`.
 
-Tunables
---------
-  - strict -- używaj czcionek bezszeryfowych jak w rozporządzeniu
-  - draft -- maluj draft
+Będzie zapewne dużo błędów po drodze.
 
+Gdyby ktoś chciał fiksy dla tych błędów włączyć do procedury konfiguracji środowiska w pliku `configure` - może zgłosić *pull request*, ale tylko jeśli nowa wersja będzie kompatybilna z systemem Fedora *oraz* Ubuntu.
+
+Struktura repozytorium
+----------------------
+
+Definicja formatu pracy:
+
+- Plik `eitidypl.cls`.
+
+Twoja wersja robocza:
+
+- Plik `meta.yaml` ze spersonalizowaną konfiguracją Pandoca,
+- Katalog `personal`, a w nim:
+  - Plik `labels.tex` z metadanymi pracy (tytuł, autor, streszczenie),
+  - Plik `.md` z treścią pracy, oraz
+  - Katalog `img` na obrazki do pracy.
+
+Proces edycji (REPL)
+--------------------
+
+Uwaga: pojęcie "tekst" w odniesieniu do pracy oznacza *wszystkie* pliki z rozszerzeniem`.md` w katalogu `personal` - porównaj z linią `in=*.md` w pliku `Makefile`.
+
+1. `make ed` by wyświetlić tekst [^tekst] do edycji (edytor ustawiasz w pliku `Makefile`),
+2. `make` by wprowadzić zmiany do pliku wyjściowego w PDF,
+3. `make show` by zobaczyć plik wyjściowy,
+4. */rinse and repeat/*.
+
+Opcje klasy
+-----------
+
+- `strict` - tylko czcionki bezszeryfowe, jak w rozporządzeniu (może nie działać),
+- `draft` - znak wodny "draft" na każdej stronie.
 
 Credits 
 -------
 
-Mikolaj Kowalski cmosqt@gmail.com based on Jakub Schmidtke: sjakub@gmail.com
+1. Initial work: Jakub Schmidtke: `sjakub@gmail.com`,
+2. Further improvements: Mikolaj Kowalski: `cmosqt@gmail.com`,
+3. Refactoring and yet further improvements: Patryk Kocielnik: `dev@kocielnik.pl`.
