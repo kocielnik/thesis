@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+global_deps=texlive-minimal pandoc librsvg2-tools
+texlive_deps=caption epstopdf biblatex-ieee
+
+### DEPENDENCY FULFILLMENT #############################
+
+install_global_deps() {
+    sudo dnf install -y "$global_deps"
+}
+
+install_texlive_deps() {
+	sudo tlmgr install $texlive_deps
+}
+
+# TeXLive: Texliveonfly: Automatically install missing dependencies.
+onfly() {
+	make tex
+	sudo texliveonfly out.tex
+}
+
+### HELPER FUNCTIONS ###################################
+#
+#   Issue those only when needed specifically.
+
+# Issue to identify the package parent to the file sought.
+parent_package() {
+    tlmgr search --global --file "$1"
+}
+
+# TLMgr sometimes fails until this is issued.
+fix_tlmgr() {
+    sudo tlmgr \
+        option repository http://mirror.ctan.org/systems/texlive/tlnet
+}
+
+### MAIN ###############################################
+
+main() {
+    install_global_deps
+    install_texlive_deps
+    #onfly
+}
+
+main
