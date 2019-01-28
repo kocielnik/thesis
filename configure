@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 global_deps=texlive-minimal pandoc librsvg2-tools
-texlive_deps=caption epstopdf biblatex-ieee
+texlive_deps=luatex caption epstopdf biblatex-ieee
 
 ### DEPENDENCY FULFILLMENT #############################
 
