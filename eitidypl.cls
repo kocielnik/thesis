@@ -7,7 +7,7 @@
 % 2. Zasady składu tekstów w języku polskim [^zasady],
 % 3. Nowe wymogi dla prac składanych na Politechnice Warszawskiej [^wym_2017].
 
-%%% LICENCJA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LEGAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Copyright 2019 Patryk Kocielnik
 % Copyright 2018 Mikołaj Kowalski <cmosqt@gmail.com>
@@ -23,36 +23,43 @@
 
 \RequirePackage{ifthen}
 
-\newboolean{@strict}
-\setboolean{@strict}{false}
-\DeclareOption{strict}{\setboolean{@strict}{true} \typeout{Using strict mode!}}
-
 \newboolean{draft}
 \setboolean{draft}{false}
 \DeclareOption{draft}{\setboolean{@draft}{true} \typeout{Using draft mode!}}
+
+\newboolean{@strict}
+\setboolean{@strict}{false}
+\DeclareOption{strict}{\setboolean{@strict}{true} \typeout{Using strict mode!}}
 
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@baseclass{report}
-\PassOptionsToClass{11pt,twoside,a4paper}{\@baseclass} %report
-%\PassOptionsToClass{11pt,twoside,a4paper,sfheadings}{\@baseclass} %mwrep
+\PassOptionsToClass{11pt,twoside,a4paper,draft}{\@baseclass} %report
 
 \LoadClass[11pt]{\@baseclass} %report
-%\LoadClass[withmarginpar,11pt]{\@baseclass} %mwrep
-%\usepackage{draftwatermark}
-%\SetWatermarkText{\textsc{draft}}
-%\SetWatermarkScale{1}
-%\SetWatermarkLightness{0.9}
-%\SetWatermarkColor[rgb]{0.8,0,0}
 
-\RequirePackage{hyphenat}
-%\RequirePackage[pdfpagelabels]{hyperref}
+\RequirePackage{polyglossia}
+\setmainlanguage{polish}
+
 \RequirePackage{hyperref}
-\RequirePackage{url}
 
 % LuaLaTeX only [@stackoverflow_lualatex_2013].
-\usepackage{fontspec}
+%\usepackage{fontspec}
+% Zamiennik Times New Roman:
+%\setmainfont{Nimbus Roman}
+
+% Include PDF in output.
+\RequirePackage{pdfpages}
+
+% Typeset algorithms in pseudocode.
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+\RequirePackage{textcomp}
+\SetKwInput{KwData}{Dane}
+\SetKwInput{KwResult}{Rezultat}
+\SetKwInput{KwIn}{Wej\'scie}
+\SetKwInput{KwOut}{Wyj\'scie}
+\SetAlgorithmName{Algorytm}{Lista algorytm\'ow}
 
 \RequirePackage[defaultsans]{opensans}
 
@@ -74,6 +81,9 @@
 \newfontfamily{\osb}[BoldFont={* Bold}]{Open Sans}
 \newfontfamily{\osbi}[BoldItalicFont={* Bold Italic}]{Open Sans}
 
+%\setmainfont{Times New Roman}
+\setmainfont{Nimbus Roman}
+
 % polishstyle
 %\renewcommand\thechapter{ \arabic{chapter}.}
 %\renewcommand\thesection{\arabic{chapter}.\arabic{section}.}
@@ -88,6 +98,24 @@
 %podpisy pod tabelami,rysunkami 9pt - \footnotesize 9pt
 % interlinia 1.15 - setspace, linespread
 %http://tex.stackexchange.com/questions/30073/why-is-the-linespread-factor-as-it-is
+
+%%% Fail to force center chapter start page numbers %%%%
+%
+%\usepackage{fancyhdr}
+%\fancyhf{}
+%\fancyhead[LE]{\slshape \leftmark}
+%\fancyhead[RO]{\slshape \rightmark}
+%\fancyfoot[C]{\thepage}
+%
+%\fancypagestyle{plain}{%
+%  \fancyhf{}
+%  \fancyfoot[C]{\thepage}
+%  \renewcommand{\headrulewidth}{0pt}
+%  \renewcommand{\footrulewidth}{0pt}
+%}
+%
+%\usepackage{titlesec}
+%\assignpagestyle{\chapter}{plain}
 
 % PK: COMMENTED OUT MANUALLY
 %\usepackage{titlesec}
@@ -137,6 +165,9 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
+\RequirePackage{subcaption}
+
+\RequirePackage{mathtools}
 
 %impnattypo requires xcolor
 %\RequirePackage[]{xcolor}
@@ -148,11 +179,19 @@
 %    \Crefname{Rysunek}{Rys.}{Rys.}
 %}
 
+%for final without comments use below
+%\usepackage[bindingoffset=10mm, inner=20mm, top=25mm, bottom=25mm]{geometry}
+\usepackage[bindingoffset=10mm, inner=20mm, top=25mm, bottom=25mm,includehead]{geometry}
+%\geometry{hmargin={3.5cm,2.5cm}}
+%\AtBeginDocument{\newgeometry{vmargin={12cm,5cm}}}
+
 \usepackage{fancyhdr}
 \fancyhf{} % clear all header and footers
 \fancyfoot[LE,RO]{\thepage}
 %\setlength{\headheight}{12pt}
+\pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt} % remove the header rule
+\renewcommand{\footrulewidth}{0.0pt}
 %redefine style at chapter
 %http://tex.stackexchange.com/questions/19738/why-doesnt-pagestyleempty-work-on-the-first-page-of-a-chapter
 %\makeatletter
@@ -168,22 +207,52 @@
 %\addtolength{\evensidemargin}{-\oprawa}
 %\usepackage[left=25mm, right=20mm, top=25mm, bottom=30mm]{geometry}
 
-%for final without comments use below
-%\usepackage[bindingoffset=10mm, inner=20mm, top=25mm, bottom=25mm]{geometry}
-\usepackage[bindingoffset=10mm, inner=20mm, top=25mm, bottom=25mm,includehead]{geometry}
-
 % Standardowe wcięcia o rozmiarze jednego firetu, zob. [^zasady].
+\RequirePackage{parskip}
 \setlength{\parindent}{1em}
 
-% Potrzebne do kompilacji z Pandoc.
+% Otocz ramką listingi, pokaż parametry do dostosowania.
 \usepackage{listings}
+\lstdefinestyle{shared}
+{
+    float=H,
+    numbers=left,
+    numbersep=1em,
+    frame=tb,
+    breaklines=true,
+    tabsize=4,
+    columns=flexible
+}
+\lstset{style=shared}
+
+\RequirePackage{float}
+\floatplacement{figure}{H}
+
+%\RequirePackage{afterpage}
+%\AtBeginDocument{%
+%  \addtocontents{toc}{\protect\afterpage\protect\cleardoublepage}%
+%}
+
+\RequirePackage{nextpage}
+
+%\usepackage{titlesec}
+%\newcommand{\sectionbreak}{\clearpage}
+
+% Redefine figure environment to only use [H] option everywhere.
+%\let\origfigure\figure
+%\let\endorigfigure\endfigure
+%\renewenvironment{figure}[1][2] {
+%    \expandafter\origfigure\expandafter[H]
+%} {
+%    \endorigfigure
+%}
 
 % Zakładki ze strukturą dokumentu w wyjściu PDF.
 \usepackage{bookmark}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 
 % Numerowanie sekcji.
-\setcounter{secnumdepth}{2}
+\setcounter{secnumdepth}{5}
 
 % Wytłuszczona czcionka w etykietach figur.
 \usepackage[labelfont=bf]{caption}
@@ -271,9 +340,11 @@
 		\end{center}
 			\@streszczenie\\[5mm]
 		\textbf{S\l owa kluczowe:} \@slowakluczowe\\[5mm]
-		\begin{minipage}{\textwidth}
-			\hrulefill\\
-		\end{minipage}
+    \end{titlepage}
+		%\begin{minipage}{\textwidth}
+		%	\hrulefill\\
+		%\end{minipage}
+    \begin{titlepage}
 		\begin{center}
 			\textbf{\@tytulen}\\[5mm]
 		\end{center}
@@ -281,6 +352,9 @@
 		\textbf{Keywords:} \@slowakluczoween\\
 		\vspace*{0pt}\vfill
 	\end{titlepage}
+    %\cleardoublepage
+    %\thispagestyle{empty}
+    %\cleartooddpage
 }
 
 \newcommand\makeinfo{
@@ -347,9 +421,11 @@
 		\end{center}
 			\footnotesize \@streszczenie\\[5mm]
 		\textbf{\small S\l owa kluczowe:} \small \@slowakluczowe
-		\begin{center}
-			\makebox[\textwidth]{\scriptsize \hrulefill}\\[15mm]
-		\end{center}
+		%\begin{center}
+		%	\makebox[\textwidth]{\scriptsize \hrulefill}\\[15mm]
+		%\end{center}
+	\end{titlepage}
+	\begin{titlepage}
 		\begin{center}
 			\textbf{\small \@tytulen}\\[5mm]
 		\end{center}
@@ -365,10 +441,6 @@
 \thispagestyle{empty}
 \null\vfill\vfill
 
-\begin{center}
-$S\; =\; \int _{0}^{T}L\, \left(q\; ,\; \dot{q}\right) \; d t\quad$
-\end{center}
-
 \newlength\longest
 \settowidth\longest{\huge\itshape przedwczesna optymalizacja jest}
 \begin{center}
@@ -376,20 +448,18 @@ $S\; =\; \int _{0}^{T}L\, \left(q\; ,\; \dot{q}\right) \; d t\quad$
   \raggedright{\huge\itshape%
   Zrób jedną rzecz \\
   i zrób ją dobrze. \\
-  (...) \\
   Przedwczesna optymalizacja \\
   jest źródłem wszelkiego zła.\par\bigskip
   }
-  \raggedleft\Large\MakeUppercase{Doug McIlroy i C.A.R. Hoare}\par%
+  \raggedleft\Large\MakeUppercase{
+        Douglas McIlroy / Charles Antony Richard Hoare}\par%
 }
-\end{center}
-
-\begin{center}
-$i\gamma^\mu\delta_{mu}\psi(x) = 0$
 \end{center}
 
 \vfill%\vfill
 }
+
+\providecommand{\passthrough}[1]{\lstset{mathescape=false}#1\lstset{mathescape=true}}
 
 \def\jednostka#1{\gdef\@jednostka{#1}}
 \def\@jednostka{???\ClassError{eitidypl}{Brak jednostki}\@ehc}

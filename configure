@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
-global_deps=texlive-minimal pandoc librsvg2-tools
-texlive_deps=luatex caption epstopdf biblatex-ieee
+global_deps=librsvg2-tools
+texlive_deps=caption \
+    epstopdf \
+    biblatex-ieee \
+    parskip \
+    luaotfload \
+    luatexbase \
+    ctablestack \
+    pdfpages \
+    algorithm2e \
+    ifoddpage \
+    relsize \
+    opensans \
+    slantsc caption mathtools parskip listings float lualatex-math
 
 ### DEPENDENCY FULFILLMENT #############################
 
@@ -11,6 +23,10 @@ install_global_deps() {
 
 install_texlive_deps() {
 	sudo tlmgr install $texlive_deps
+}
+
+install_py_deps() {
+    pip3 install --user `cat pydeps`
 }
 
 # TeXLive: Texliveonfly: Automatically install missing dependencies.
@@ -37,9 +53,11 @@ fix_tlmgr() {
 ### MAIN ###############################################
 
 main() {
+    "$@"
+
     install_global_deps
     install_texlive_deps
-    #onfly
+    onfly
 }
 
-main
+main "$@"

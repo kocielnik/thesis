@@ -1,18 +1,16 @@
-\drafttrue
-
-\maketitle
-
-\makeinfo
+\newcommand{\passthrough}[1]{#1}
 
 \ifdraft
+    \clearpage
+    \includepdf[pages=-]{test/recenzja-nowy-formularz.pdf}
     \section*{Najnowsze zmiany w projekcie}
     \thispagestyle{empty}
-    \lstinputlisting{whatsnew.tex}
-\else
-    \makededykacja
 \fi
 
 \makeabstracts
 
+\thispagestyle{empty}
+\cleartooddpage
 \tableofcontents
 
+\cleartooddpage
