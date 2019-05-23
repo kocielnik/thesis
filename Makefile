@@ -1,4 +1,5 @@
-in=personal/*.md
+personal_dir=personal
+in=$(personal_dir)/*.md
 editor=vim
 out=out.pdf
 shipdir=~
@@ -10,15 +11,14 @@ all: paper
 paper: whatsnew.tex
 	@pandoc $(addopts) \
 		--listings \
-		--include-in-header=personal/labels.tex \
+		--include-in-header=$(personal_dir)/labels.tex \
 		-f markdown \
 		--filter=pandoc-fignos \
 		--filter=pandoc-eqnos \
 		--filter=pandoc-crossref \
-		--filter=pandoc-plantuml \
 		--filter=pandoc-citeproc \
 		--top-level-division=chapter \
-		--resource-path=:personal:personal/infocard \
+		--resource-path=:$(personal_dir):$(personal_dir)/infocard \
 		meta.yaml \
 		frontmatter.tex \
 		$(in) \

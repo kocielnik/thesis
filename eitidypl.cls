@@ -46,8 +46,10 @@
 
 % LuaLaTeX only [@stackoverflow_lualatex_2013].
 %\usepackage{fontspec}
-% Zamiennik Times New Roman:
-%\setmainfont{Nimbus Roman}
+% Zamiennik Times New Roman [^roman]:
+%\setmainfont{TeX Gyre Termes}
+
+% [^roman]: https://tex.stackexchange.com/questions/74496/how-to-use-times-roman-nimbus-roman-with-fontspec-under-linux-and-lualatex
 
 % Include PDF in output.
 \RequirePackage{pdfpages}
@@ -82,7 +84,7 @@
 \newfontfamily{\osbi}[BoldItalicFont={* Bold Italic}]{Open Sans}
 
 %\setmainfont{Times New Roman}
-\setmainfont{Nimbus Roman}
+\setmainfont{TeX Gyre Termes}
 
 % polishstyle
 %\renewcommand\thechapter{ \arabic{chapter}.}
