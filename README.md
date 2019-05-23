@@ -1,5 +1,9 @@
 # Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
 
+> We run books like software projects: everything is checked in to a Subversion repository, and all books are written in Markdown or XML markup.
+
+-- The Pragmatic Bookshelf, wydawnictwo komputerowe
+
 *Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
 
 Oferuje:
