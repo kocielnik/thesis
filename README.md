@@ -1,17 +1,20 @@
 # Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
 
-> We run books like software projects: everything is checked in to a Subversion repository, and all books are written in Markdown or XML markup.
+> Rozwijamy książki podobnie, jak oprogramowanie: wszystko jest pod nadzorem
+> systemu kontroli wersji, i wszystkie książki pisane są w składni Markdown
+> albo w języku XML.
 
 -- The Pragmatic Bookshelf, wydawnictwo komputerowe
 
 *Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
 
-Oferuje:
+W pakiecie:
 
 1. Szablon z formatowaniem gotowym do użycia w pracy magisterskiej,
-2. Proste użycie poprzez:
-  - włączenie go do nagłówka pliku `.tex` z treścią pracy, albo
-  - dołączenie *do* niego treści w formacie Markdown.
+2. Proste użycie poprzez mechanizm `documentclass` systemu LaTeX.
+3. Kompilacja jedną komendą w kilka sekund dla pracy liczącej 90 stron.
+   Podobne zadanie narzędzia dedykowane dla systemu LaTeX wykonują w ciągu od
+   60 do 120 sekund.
 
 **Nie** oferuje (i na razie nie powinien oferować):
 
