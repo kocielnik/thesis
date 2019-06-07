@@ -1,10 +1,12 @@
 # Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
 
 > Rozwijamy książki podobnie, jak oprogramowanie: wszystko jest pod nadzorem
-> systemu kontroli wersji, i wszystkie książki pisane są w składni Markdown
+> systemu kontroli wersji, a wszystkie książki pisane są w składni Markdown
 > albo w języku XML.
 
--- The Pragmatic Bookshelf, wydawnictwo komputerowe
+-- Autorzy książki "The Pragmatic Programmer" o swoim wydawnictwie
+
+Użycie: 
 
 *Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
 
