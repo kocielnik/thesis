@@ -1,0 +1,13 @@
+image: rocker/verse:3.4.1
+
+pages:
+  stage: deploy
+  script:
+  - cd src #&& make
+  - mkdir ../public
+  - cp index.html out.pdf ../public/
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

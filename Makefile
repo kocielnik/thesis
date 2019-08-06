@@ -8,7 +8,7 @@ name=dissertation.pdf
 .PHONY: test, clean, ed
 
 all: paper
-paper: whatsnew.tex
+paper:
 	@pandoc $(addopts) \
 		--listings \
 		--include-in-header=$(personal_dir)/labels.tex \
@@ -25,7 +25,6 @@ paper: whatsnew.tex
 		--pdf-engine=lualatex \
 		-t latex \
 		-o $(out)
-	@rm whatsnew.tex
 whatsnew.tex:
 	@git log --max-count=7 > whatsnew.tex
 verbose: addopts=--verbose
