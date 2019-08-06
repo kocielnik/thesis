@@ -3,6 +3,7 @@ image: rocker/verse:3.4.1
 pages:
   stage: deploy
   script:
+  - make
   - mkdir public
   - cp index.html out.pdf public
   artifacts:
