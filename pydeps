@@ -1,2 +1,4 @@
+pandoc-fignos
+pandoc-eqnos
 pandoc-crossref
 pandoc-plantuml-filter

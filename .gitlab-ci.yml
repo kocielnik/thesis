@@ -3,6 +3,7 @@ image: rocker/verse
 pages:
   stage: deploy
   script:
+  - pip3 install --user `cat pydeps`
   - make
   - mkdir public
   - cp index.html out.pdf public
