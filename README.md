@@ -6,9 +6,7 @@
 
 -- Autorzy książki "The Pragmatic Programmer" o swoim wydawnictwie
 
-Użycie: 
-
-*Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
+Przykładowy dokument wyjściowy: [out.pdf](https://wut-pw.gitlab.io/dyplom-pro/out.pdf)
 
 W pakiecie:
 
