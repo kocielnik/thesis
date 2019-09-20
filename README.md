@@ -21,3 +21,5 @@ Save it to file `thesis.md`, then to generate the PDF output, issue:
 pandoc -f markdown -t latex -o thesis.pdf thesis.md
 ```
 
+For more details on how to use this package, refer to the [guide](guide.md).
+
