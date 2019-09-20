@@ -11,7 +11,8 @@ university: Your University
 
 # Introduction
 
-This thesis has been written using a \keyword{DTP} package called Dyplom-Pro [^k_dyplom-pro_2019].
+This thesis has been written using a \keyword{DTP} package called Dyplom-Pro
+[^k_dyplom-pro_2019].
 
 ```
 
