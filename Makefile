@@ -8,6 +8,8 @@ name=dissertation.pdf
 .PHONY: test, clean, ed
 
 all: paper
+tex: out=out.tex
+tex: paper
 paper:
 	@pandoc $(addopts) \
 		--listings \

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 global_deps=librsvg2-tools
-texlive_deps=caption \
+texlive_deps="caption \
     epstopdf \
     biblatex-ieee \
     parskip \
@@ -13,16 +13,55 @@ texlive_deps=caption \
     ifoddpage \
     relsize \
     opensans \
-    slantsc caption mathtools parskip listings float lualatex-math
+    slantsc \
+    caption \
+    mathtools \
+    parskip \
+    listings \
+    float \
+    lualatex-math"
 
 ### DEPENDENCY FULFILLMENT #############################
 
+install_homebrew() {
+
+    echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+
+    # Install a test package.
+    brew install hello
+}
+
 install_global_deps() {
-    sudo dnf install -y "$global_deps"
+
+    pkg_man=dnf
+
+    cat /etc/*-release | grep Ubuntu > /dev/null
+
+    # If on Ubuntu:
+    if [[ $? -eq 0 ]]; then
+        pkg_man=apt
+        global_deps="librsvg2-2"
+    fi
+
+    sudo "$pkg_man" install -y "$global_deps"
+
+    # Install Homebrew On Linux.
+    install_homebrew
 }
 
 install_texlive_deps() {
-	sudo tlmgr install $texlive_deps
+
+    # Sudo not needed here.
+    tlmgr install $texlive_deps
+
+    #for pkg in $texlive_deps; do
+    #    tlmgr install $pkg
+    #done
 }
 
 install_py_deps() {
@@ -32,7 +71,11 @@ install_py_deps() {
 # TeXLive: Texliveonfly: Automatically install missing dependencies.
 onfly() {
 	make tex
-	sudo texliveonfly out.tex
+	texliveonfly out.tex
+}
+
+install_pandoc_deps() {
+    brew install pandoc-crossref
 }
 
 ### HELPER FUNCTIONS ###################################
@@ -57,6 +100,8 @@ main() {
 
     install_global_deps
     install_texlive_deps
+    install_pandoc_deps
+    #install_py_deps
     onfly
 }
 
