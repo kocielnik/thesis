@@ -7,6 +7,7 @@ pages:
   #- make
   - mkdir public
   - cp index.html out.pdf public
+  - ./configure
   artifacts:
     paths:
     - public
