@@ -9,6 +9,7 @@ pages:
   - useradd --create-home "$GITLAB_USER_LOGIN"
   - mkdir public
   - cp index.html out.pdf public
+  - apt-get install -y sudo
   - sudo -u "$GITLAB_USER_LOGIN" ./configure
   artifacts:
     paths:
