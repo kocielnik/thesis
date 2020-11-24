@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 global_deps=librsvg2-tools
-texlive_deps="caption \
+texlive_deps="texliveonfly \
+    caption \
     epstopdf \
     biblatex-ieee \
     parskip \
