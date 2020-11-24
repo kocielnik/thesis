@@ -5,6 +5,9 @@ pages:
   script:
   #- pip3 install --user `cat pydeps`
   #- make
+  - USERNAME=user echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
+  - USERNAME=user useradd --create-home "$USERNAME"
+  - USERNAME=user su "$USERNAME"
   - mkdir public
   - cp index.html out.pdf public
   - ./configure
