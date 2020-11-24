@@ -5,7 +5,7 @@ pages:
   script:
   #- pip3 install --user `cat pydeps`
   #- make
-  - apt-get update && apt-get install -y sudo
+  - apt-get update && apt-get install -y sudo curl
   - echo "$GITLAB_USER_LOGIN ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
   - useradd --create-home "$GITLAB_USER_LOGIN"
   - mkdir public
