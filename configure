@@ -23,9 +23,9 @@ texlive_deps="caption \
 
 ### DEPENDENCY FULFILLMENT #############################
 
-install_homebrew() {
+install_brew() {
 
-    echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
     test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
     test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -51,7 +51,7 @@ install_global_deps() {
     sudo "$pkg_man" install -y "$global_deps"
 
     # Install Homebrew On Linux.
-    install_homebrew
+    install_brew
 }
 
 install_texlive_deps() {
