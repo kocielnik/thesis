@@ -5,11 +5,11 @@ pages:
   script:
   #- pip3 install --user `cat pydeps`
   #- make
+  - apt-get update && apt-get install -y sudo
   - echo "$GITLAB_USER_LOGIN ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
   - useradd --create-home "$GITLAB_USER_LOGIN"
   - mkdir public
   - cp index.html out.pdf public
-  - apt-get update && apt-get install -y sudo
   - sudo -u "$GITLAB_USER_LOGIN" ./configure
   artifacts:
     paths:
