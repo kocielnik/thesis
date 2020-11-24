@@ -5,9 +5,9 @@ pages:
   script:
   #- pip3 install --user `cat pydeps`
   #- make
-  - USERNAME=user echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
-  - USERNAME=user useradd --create-home "$USERNAME"
-  - USERNAME=user su "$USERNAME"
+  - echo "$GITLAB_USER_LOGIN ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
+  - useradd --create-home "$GITLAB_USER_LOGIN"
+  - su "$GITLAB_USER_LOGIN"
   - mkdir public
   - cp index.html out.pdf public
   - ./configure
