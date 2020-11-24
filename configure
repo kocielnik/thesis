@@ -38,7 +38,7 @@ install_homebrew() {
 
 install_global_deps() {
 
-    pkg_man=dnf
+    pkg_man=apt
 
     cat /etc/*-release | grep Ubuntu > /dev/null
 
