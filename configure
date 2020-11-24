@@ -102,7 +102,7 @@ main() {
     install_global_deps
     install_texlive_deps
     install_pandoc_deps
-    #install_py_deps
+    install_py_deps
     onfly
 }
 
