@@ -13,6 +13,7 @@ tex: paper
 paper:
 	@pandoc $(addopts) \
 		--listings \
+		--include-in-header=fignos_settings.tex \
 		--include-in-header=$(personal_dir)/labels.tex \
 		-f markdown \
 		--filter=pandoc-fignos \

@@ -23,13 +23,11 @@ bibliography: # refs.bib
 - bib/practical_measurement.bib
 
 # Figure captioning.
-fignos-capitalise: True
 fignos-caption-name: Rys.
 fignos-plus-name: Rys.
 
 # Equation captioning.
 eqnos-cleveref: True
-eqnos-plus-name: ""
 eqnos-star-name: ""
 eqnos-eqref: True
 
