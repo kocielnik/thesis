@@ -99,11 +99,17 @@ install_pandoc() {
         && sudo apt-get install -y ./"$package"
 }
 
+set_path() {
+    PATH="$HOME"/.local/bin:"$PATH"; export "$PATH";
+    echo "$PATH"
+}
+
 ### MAIN ###############################################
 
 main() {
     "$@"
 
+    set_path
     install_global_deps
     install_texlive_deps
     install_py_deps
