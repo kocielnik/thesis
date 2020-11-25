@@ -119,6 +119,8 @@ Charakterystyka architektury FMA sprawia, że odbiorca może w bardziej zautomat
 
 Warto zwrócić uwagę, iż opracowana architektura może być użyta do szacowania energetycznej samowystarczalności zarówno pojedynczych odbiorników, jak i budynków a nawet ich zespołów. Jak podają autorzy przykładowych badań, zgrupowanie 700 gospodarstw domowych do celów pomiaru ich zagregowanej elastyczności zgodnie ze wzorem @eq:fi, pozwoliło na osiągnięcie niepewności pomiaru nie przekraczającej 10% [@wang_development_2018].
 
+$$ y = mx + b $$ {#eq:fi}
+
 ## Wnioski
 
 Zaprojektowanie rozwiązania odpowiadającego postawionym kryteriom okazało się możliwe, a przygotowany prototyp potwierdził działanie rozwiązania w zamierzony sposób.
