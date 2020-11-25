@@ -50,9 +50,6 @@ install_global_deps() {
     fi
 
     sudo "$pkg_man" install -y "$global_deps"
-
-    # Install Homebrew On Linux.
-    install_brew
 }
 
 install_texlive_deps() {
@@ -76,6 +73,7 @@ onfly() {
 }
 
 install_pandoc_deps() {
+    install_brew
     brew install pandoc-crossref
 }
 
@@ -101,7 +99,6 @@ main() {
 
     install_global_deps
     install_texlive_deps
-    install_pandoc_deps
     install_py_deps
     onfly
 }
