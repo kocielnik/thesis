@@ -18,7 +18,7 @@ paper:
 		--filter=pandoc-fignos \
 		--filter=pandoc-eqnos \
 		--filter=pandoc-crossref \
-		--filter=pandoc-citeproc \
+		--citeproc \
 		--top-level-division=chapter \
 		--resource-path=:$(personal_dir):$(personal_dir)/infocard \
 		meta.yaml \
