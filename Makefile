@@ -13,8 +13,6 @@ tex: paper
 paper:
 	@pandoc $(addopts) \
 		--listings \
-		--include-in-header=fignos_settings.tex \
-		--include-in-header=$(personal_dir)/labels.tex \
 		-f markdown \
 		--filter=pandoc-fignos \
 		--filter=pandoc-eqnos \
@@ -23,6 +21,7 @@ paper:
 		--top-level-division=chapter \
 		--resource-path=:$(personal_dir):$(personal_dir)/infocard \
 		meta.yaml \
+		$(personal_dir)/labels.tex \
 		frontmatter.tex \
 		$(in) \
 		--pdf-engine=lualatex \
