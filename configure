@@ -92,6 +92,13 @@ fix_tlmgr() {
         option repository http://mirror.ctan.org/systems/texlive/tlnet
 }
 
+install_pandoc() {
+    package=pandoc-2.11.2-1-amd64.deb
+    url=https://github.com/jgm/pandoc/releases/download/2.11.2/"$package"
+    wget -c "$url" \
+        && sudo apt-get install -y ./"$package"
+}
+
 ### MAIN ###############################################
 
 main() {
@@ -100,6 +107,7 @@ main() {
     install_global_deps
     install_texlive_deps
     install_py_deps
+    install_pandoc
     onfly
 }
 
