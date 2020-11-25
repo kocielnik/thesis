@@ -179,6 +179,8 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
+\usepackage{cleveref}
+
 \RequirePackage{subcaption}
 
 \RequirePackage{mathtools}
