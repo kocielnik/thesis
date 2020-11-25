@@ -93,10 +93,44 @@ fix_tlmgr() {
 }
 
 install_pandoc() {
+    sudo apt-get install -y apt-utils
     package=pandoc-2.11.2-1-amd64.deb
     url=https://github.com/jgm/pandoc/releases/download/2.11.2/"$package"
     wget -c "$url" \
         && sudo apt-get install -y ./"$package"
+}
+
+install_crossref() {
+
+    get_archive() {
+        file_name="$1"
+        url=https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.8.4/"$file_name"
+        axel -n 3 "$url"
+    }
+
+    do_install() {
+        file_name=pandoc-crossref-Linux.tar.xz
+
+        if ! [[ -f "$file_name" ]]; then
+            get_archive "$file_name"
+        fi
+
+        if ! [[ -f "pandoc-crossref" ]]; then
+            tar zxvf "$file_name"
+        fi
+
+        if [[ -f "pandoc-crossref" ]]; then
+            mkdir -p ~/.local/bin ~/.local/man \
+                && mv pandoc-crossref ~/.local/bin \
+                && mv pandoc-crossref.1 ~/.local/man
+        fi
+    }
+
+    (temp_dir="$(mktemp -d)"; \
+        cd "$temp_dir" \
+        && do_install \
+        && cd - \
+        && rm -rf "$temp_dir")
 }
 
 set_path() {
@@ -114,6 +148,7 @@ main() {
     install_texlive_deps
     install_py_deps
     install_pandoc
+    install_crossref
     onfly
 }
 
