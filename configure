@@ -96,7 +96,7 @@ install_pandoc() {
     sudo apt-get install -y apt-utils
     package=pandoc-2.11.2-1-amd64.deb
     url=https://github.com/jgm/pandoc/releases/download/2.11.2/"$package"
-    wget -c "$url" \
+    wget --quiet -c "$url" \
         && sudo apt-get install -y ./"$package"
 }
 
@@ -105,7 +105,7 @@ install_crossref() {
     get_archive() {
         file_name="$1"
         url=https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.8.4/"$file_name"
-        axel -n 3 "$url"
+        axel --quiet -n 3 "$url"
     }
 
     do_install() {
