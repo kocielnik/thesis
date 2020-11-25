@@ -28,7 +28,6 @@ fignos-plus-name: Rys.
 
 # Equation captioning.
 eqnos-cleveref: True
-eqnos-star-name: ""
 eqnos-eqref: True
 
 # Źródła
