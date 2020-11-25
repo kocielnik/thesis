@@ -12,7 +12,7 @@ pages:
   - useradd --create-home "$GITLAB_USER_LOGIN"
   - mkdir public
   - cp index.html out.pdf public
-  - sudo -u "$GITLAB_USER_LOGIN" ./configure
+  - export PATH="$HOME"/.local/bin:"$PATH" sudo -u "$GITLAB_USER_LOGIN" ./configure
   artifacts:
     paths:
     - public
