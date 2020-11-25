@@ -116,7 +116,7 @@ install_crossref() {
         fi
 
         if ! [[ -f "pandoc-crossref" ]]; then
-            tar -zxvf "$file_name"
+            tar -xf "$file_name"
         fi
 
         if [[ -f "pandoc-crossref" ]]; then
