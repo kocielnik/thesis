@@ -55,7 +55,7 @@ install_global_deps() {
 install_texlive_deps() {
 
     # Sudo not needed here.
-    tlmgr install $texlive_deps
+    sudo tlmgr install $texlive_deps
 
     #for pkg in $texlive_deps; do
     #    tlmgr install $pkg
@@ -138,6 +138,10 @@ set_path() {
     echo "$PATH"
 }
 
+install_texlive() {
+    sudo apt-get install -y texlive
+}
+
 ### MAIN ###############################################
 
 main() {
@@ -145,6 +149,7 @@ main() {
 
     set_path
     install_global_deps
+    install_texlive
     install_texlive_deps
     install_py_deps
     install_pandoc
