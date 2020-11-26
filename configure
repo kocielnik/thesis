@@ -55,7 +55,7 @@ install_global_deps() {
 install_texlive_deps() {
 
     # Sudo not needed here.
-    sudo tlmgr install $texlive_deps
+    tlmgr install $texlive_deps
 
     #for pkg in $texlive_deps; do
     #    tlmgr install $pkg
@@ -140,6 +140,7 @@ set_path() {
 
 install_texlive() {
     sudo apt-get install -y texlive
+    tlmgr init-usertree
 }
 
 ### MAIN ###############################################
