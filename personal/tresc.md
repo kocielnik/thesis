@@ -115,7 +115,7 @@ Celem tej pracy było przedstawienie architektury umożliwiającej zautomatyzowa
 
 Przedstawiona w tej pracy architektura spełnia postawione przez nią zadanie, implementując ocenę elastyczności ze szczególnym uwzględnieniem bezpieczeństwa wrażliwych danych o odbiorcy, wiarygodności rezultatów, wygody dostępu do wyników pomiaru oraz łatwości dalszego rozwoju systemu.
 
-Charakterystyka architektury FMA sprawia, że odbiorca może w bardziej zautomatyzowany sposób zrównoważyć koszty odbieranej energii zyskami z tytułu modyfikowania profilu swego zapotrzebowania [@edmunds_distributed_2017].
+Charakterystyka architektury FMA sprawia, że odbiorca może w bardziej zautomatyzowany sposób zrównoważyć koszty odbieranej energii zyskami z tytułu modyfikowania profilu swego zapotrzebowania.
 
 Warto zwrócić uwagę, iż opracowana architektura może być użyta do szacowania energetycznej samowystarczalności zarówno pojedynczych odbiorników, jak i budynków a nawet ich zespołów. Jak podają autorzy przykładowych badań, zgrupowanie 700 gospodarstw domowych do celów pomiaru ich zagregowanej elastyczności zgodnie ze wzorem @eq:fi, pozwoliło na osiągnięcie niepewności pomiaru nie przekraczającej 10% [@wang_development_2018].
 
