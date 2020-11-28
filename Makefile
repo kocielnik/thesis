@@ -16,7 +16,6 @@ paper:
 		-f markdown \
 		--filter=pandoc-fignos \
 		--filter=pandoc-eqnos \
-		--filter=pandoc-crossref \
 		--bibliography=bib/dsr.bib \
 		--bibliography=bib/architecture.bib \
 		--bibliography=bib/practical_measurement.bib \
