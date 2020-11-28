@@ -17,7 +17,8 @@ paper:
 		--filter=pandoc-fignos \
 		--filter=pandoc-eqnos \
 		--filter=pandoc-crossref \
-		--citeproc \
+		--bibliography=bib/dsr.bib \
+		--bibliography=bib/architecture.bib \
 		--top-level-division=chapter \
 		--resource-path=:$(personal_dir):$(personal_dir)/infocard \
 		meta.yaml \
