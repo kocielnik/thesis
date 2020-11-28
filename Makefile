@@ -19,6 +19,7 @@ paper:
 		--filter=pandoc-crossref \
 		--bibliography=bib/dsr.bib \
 		--bibliography=bib/architecture.bib \
+		--bibliography=bib/practical_measurement.bib \
 		--top-level-division=chapter \
 		--resource-path=:$(personal_dir):$(personal_dir)/infocard \
 		meta.yaml \
