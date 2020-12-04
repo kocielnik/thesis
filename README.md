@@ -13,10 +13,14 @@ Użycie:
 W pakiecie:
 
 1. Szablon z formatowaniem gotowym do użycia w pracy magisterskiej,
+    - Bardziej aktualny szablon pracy dyplomowej dla EiTI PW tu:
+    [WUT-Thesis](https://github.com/ArturB/WUT-Thesis)
 2. Proste użycie poprzez mechanizm `documentclass` systemu LaTeX.
 3. Kompilacja jedną komendą w kilka sekund dla pracy liczącej 90 stron.
    Podobne zadanie narzędzia dedykowane dla systemu LaTeX wykonują w ciągu od
    60 do 120 sekund.
+
+Więcej informacji o przygotowywaniu pracy dyplomowej na WEiTI: [Poradnik dyplomanta](http://www.ii.pw.edu.pl/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta).
 
 **Nie** oferuje (i na razie nie powinien oferować):
 
