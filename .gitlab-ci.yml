@@ -3,17 +3,11 @@ image: ubuntu:latest
 pages:
   stage: deploy
   script:
-  #- pip3 install --user `cat pydeps`
-  #- make
-  # Configure timezone as required to install sudo without warnings.
-  - TZ=Europe/Warsaw && ln -snf /usr/share/zoneinfo/"$TZ" /etc/localtime && echo "$TZ" > /etc/timezone
-  - apt-get update && apt-get install -y sudo curl git make python3-pip wget axel
-  - echo "$GITLAB_USER_LOGIN ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
-  - useradd --create-home "$GITLAB_USER_LOGIN"
+  - ./setup_container
+  - ./configure
   - mkdir public
   - cp index.html out.pdf public
-  - sudo -u "$GITLAB_USER_LOGIN" ./configure
-  - sudo -u "$GITLAB_USER_LOGIN" make
+  - make
   artifacts:
     paths:
     - public
