@@ -155,7 +155,7 @@ main() {
     install_py_deps
     install_pandoc
     install_crossref
-    onfly
+    #onfly
 }
 
 main "$@"
