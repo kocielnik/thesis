@@ -24,3 +24,13 @@ pandoc -f markdown -t latex -o thesis.pdf thesis.md
 
 For more details on how to use this package, refer to the [guide](guide.md).
 
+# Usage without installing Pandoc
+
+You can use an online tool to generate LaTeX from Markdown. Then you can paste
+the LaTeX source to your LaTeX project, eg. on Overleaf. The summary of steps
+is as follows:
+
+1. Write thesis text in Markdown
+2. Generate LaTeX from Markdown using
+   https://pandoc.org/try/?from=markdown&to=latex
+3. Include LaTeX in the example project as main.tex.
