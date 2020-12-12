@@ -13,6 +13,7 @@ pages:
   - mkdir public
   - cp index.html out.pdf public
   - sudo -u "$GITLAB_USER_LOGIN" ./configure
+  - sudo -u "$GITLAB_USER_LOGIN" make
   artifacts:
     paths:
     - public
