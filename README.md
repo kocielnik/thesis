@@ -34,3 +34,9 @@ is as follows:
 2. Generate LaTeX from Markdown using
    https://pandoc.org/try/?from=markdown&to=latex
 3. Include LaTeX in the example project as main.tex.
+
+# Other options to get LaTeX from Markdown
+
+1. https://www.docverter.com/
+2. Authorea.com
+3. Self-hosted from https://github.com/mrded/pandoc-as-a-service
