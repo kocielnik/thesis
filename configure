@@ -136,6 +136,7 @@ install_crossref() {
 set_path() {
     PATH="$HOME"/.local/bin:"$PATH"; export "$PATH";
     echo "$PATH"
+    tee -a ~/.bashrc <<< 'export PATH="$HOME"/.local/bin:"$PATH"'
 }
 
 install_texlive() {
