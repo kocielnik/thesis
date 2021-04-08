@@ -63,7 +63,7 @@ install_texlive_deps() {
 }
 
 install_py_deps() {
-    pip3 install --user `cat pydeps`
+    pip3 install `cat pydeps`
 }
 
 # TeXLive: Texliveonfly: Automatically install missing dependencies.
