@@ -1,105 +1,5 @@
 #!/usr/bin/env bash
 
-global_deps=librsvg2-tools
-texlive_deps="texliveonfly \
-    caption \
-    epstopdf \
-    biblatex-ieee \
-    parskip \
-    luaotfload \
-    luatexbase \
-    ctablestack \
-    pdfpages \
-    algorithm2e \
-    ifoddpage \
-    relsize \
-    opensans \
-    slantsc \
-    caption \
-    mathtools \
-    parskip \
-    listings \
-    float \
-    lualatex-math"
-
-### DEPENDENCY FULFILLMENT #############################
-
-install_brew() {
-
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-
-    # Install a test package.
-    brew install hello
-}
-
-install_global_deps() {
-
-    pkg_man=apt
-
-    cat /etc/*-release | grep Ubuntu > /dev/null
-
-    # If on Ubuntu:
-    if [[ $? -eq 0 ]]; then
-        pkg_man=apt
-        global_deps="librsvg2-2"
-    fi
-
-    sudo "$pkg_man" install -y "$global_deps"
-}
-
-install_texlive_deps() {
-
-    # Sudo not needed here.
-    tlmgr install $texlive_deps
-
-    #for pkg in $texlive_deps; do
-    #    tlmgr install $pkg
-    #done
-}
-
-install_py_deps() {
-    pip3 install --user `cat pydeps`
-}
-
-# TeXLive: Texliveonfly: Automatically install missing dependencies.
-onfly() {
-	make tex
-	texliveonfly out.tex
-}
-
-install_pandoc_deps() {
-    install_brew
-    brew install pandoc-crossref
-}
-
-### HELPER FUNCTIONS ###################################
-#
-#   Issue those only when needed specifically.
-
-# Issue to identify the package parent to the file sought.
-parent_package() {
-    tlmgr search --global --file "$1"
-}
-
-# TLMgr sometimes fails until this is issued.
-fix_tlmgr() {
-    sudo tlmgr \
-        option repository http://mirror.ctan.org/systems/texlive/tlnet
-}
-
-install_pandoc() {
-    sudo apt-get install -y apt-utils
-    package=pandoc-2.11.2-1-amd64.deb
-    url=https://github.com/jgm/pandoc/releases/download/2.11.2/"$package"
-    wget --quiet -c "$url" \
-        && sudo apt-get install -y ./"$package"
-}
-
 install_crossref() {
 
     get_archive() {
@@ -133,31 +33,8 @@ install_crossref() {
         && rm -rf "$temp_dir")
 }
 
-set_path() {
-    tee -a ~/.bashrc <<< 'export PATH="$HOME"/.local/bin:"$PATH"'
-    source ~/.bashrc
-}
-
-install_texlive() {
-    sudo apt-get install -y texlive
-    tlmgr init-usertree
-}
-
-### MAIN ###############################################
-
 main() {
-    "$@"
-
-    set_path
-    install_global_deps
-    install_texlive
-    install_texlive_deps
-    install_py_deps
-    install_pandoc
     install_crossref
-    #onfly
-
-    export PATH="$HOME"/.local/bin:"$PATH"
 }
 
 main "$@"
