@@ -26,6 +26,19 @@ RUN echo 'export PATH="$HOME"/.local/bin:"$PATH"' | tee -a ~/.profile
 
 RUN tlmgr init-usertree
 
+RUN pip3 install --user \
+    pandoc-fignos
+    pandoc-eqnos
+    pandoc-tablenos
+    pandoc-secnos
+    pandoc-crossref
+    pandoc-plantuml-filter
+
+# Fix tlmgr error (https://tex.stackexchange.com/a/528635)
+RUN curl -fsSL https://www.preining.info/rsa.asc | tlmgr key add -
+
+RUN tlmgr update --all
+
 RUN tlmgr install \
     texliveonfly \
     caption \
@@ -47,11 +60,3 @@ RUN tlmgr install \
     listings \
     float \
     lualatex-math
-
-RUN pip3 install --user \
-    pandoc-fignos
-    pandoc-eqnos
-    pandoc-tablenos
-    pandoc-secnos
-    pandoc-crossref
-    pandoc-plantuml-filter
