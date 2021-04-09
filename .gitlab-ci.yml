@@ -1,9 +1,8 @@
-image: ubuntu:latest
+image: registry.gitlab.com/wut-pw/dyplom-pro
 
 pages:
   stage: deploy
   script:
-  - ./setup_container
   - ./configure
   - mkdir public
   - cp index.html out.pdf public
