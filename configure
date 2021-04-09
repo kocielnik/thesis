@@ -63,7 +63,7 @@ install_texlive_deps() {
 }
 
 install_py_deps() {
-    pip3 install `cat pydeps`
+    pip3 install --user `cat pydeps`
 }
 
 # TeXLive: Texliveonfly: Automatically install missing dependencies.
@@ -157,6 +157,8 @@ main() {
     install_pandoc
     install_crossref
     #onfly
+
+    export PATH="$HOME"/.local/bin:"$PATH"
 }
 
 main "$@"
