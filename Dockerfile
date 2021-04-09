@@ -14,8 +14,10 @@ RUN pandoc_deb=pandoc-2.11.2-1-amd64.deb \
     && url=https://github.com/jgm/pandoc/releases/download/2.11.2/"$pandoc_deb" \
     && wget --quiet -c "$url" \
     && apt-get install -y ./"$pandoc_deb" \
-    && rm "$pandoc_deb"
+    && rm "$pandoc_deb" \
+    && apt-get clean
 
+RUN echo "$user ALL=(ALL) NOPASSWD:ALL" | tee --append /etc/sudoers
 RUN useradd --create-home "$user"
 
 USER $user
