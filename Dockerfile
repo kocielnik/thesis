@@ -7,7 +7,7 @@ RUN ln -snf /usr/share/zoneinfo/"$tz" /etc/localtime && echo "$tz" > /etc/timezo
 
 RUN apt-get update \
     && apt-get install -y curl git make python3-pip wget axel librsvg2-2 \
-    apt-utils sudo \
+    apt-utils fonts-liberation sudo \
     && apt-get clean
 
 RUN pandoc_deb=pandoc-2.11.2-1-amd64.deb \
@@ -58,4 +58,11 @@ RUN tlmgr install \
     parskip \
     listings \
     float \
-    lualatex-math
+    lualatex-math \
+    polyglossia \
+    fontaxes \
+    tocloft \
+    cleveref \
+    fancyhdr \
+    nextpage \
+    bookmark 

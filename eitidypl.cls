@@ -96,7 +96,7 @@
 \newfontfamily{\osbi}[BoldItalicFont={* Bold Italic}]{Open Sans}
 
 %\setmainfont{Times New Roman}
-\setmainfont{TeX Gyre Termes}
+\setmainfont{Liberation Serif}
 
 % polishstyle
 %\renewcommand\thechapter{ \arabic{chapter}.}
@@ -475,7 +475,7 @@
 \vfill%\vfill
 }
 
-\providecommand{\passthrough}[1]{\lstset{mathescape=false}#1\lstset{mathescape=true}}
+%\providecommand{\passthrough}[1]{\lstset{mathescape=false}#1\lstset{mathescape=true}}
 
 \def\jednostka#1{\gdef\@jednostka{#1}}
 \def\@jednostka{???\ClassError{eitidypl}{Brak jednostki}\@ehc}
