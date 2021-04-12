@@ -70,3 +70,4 @@ RUN tlmgr install \
     bookmark \
     selnolig \
     pdflscape
+RUN tlmgr install pdfpages
