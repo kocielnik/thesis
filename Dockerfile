@@ -39,6 +39,7 @@ RUN wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
 RUN echo 'export PATH="$HOME"/bin:"$PATH"' | tee -a ~/.profile
 
 ENV PATH="$HOME/bin:$PATH"
+RUN tlmgr update --self \
 RUN tlmgr install \
     caption \
     epstopdf \
