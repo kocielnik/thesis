@@ -70,4 +70,4 @@ RUN tlmgr install \
     bookmark \
     selnolig \
     pdflscape
-RUN tlmgr install pdfpages
+RUN tlmgr install pdfpages algorithm2e
