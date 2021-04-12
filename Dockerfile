@@ -65,4 +65,7 @@ RUN tlmgr install \
     cleveref \
     fancyhdr \
     nextpage \
-    bookmark 
+    bookmark \
+    babel-polish \
+    selnolig \
+    pdflscape

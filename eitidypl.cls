@@ -51,8 +51,7 @@
 
 \LoadClass[11pt]{\@baseclass} %report
 
-\RequirePackage{polyglossia}
-\setmainlanguage{polish}
+\RequirePackage{polski}
 
 \RequirePackage{hyperref}
 
@@ -179,11 +178,11 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
+\RequirePackage{mathtools}
+
 \usepackage{cleveref}
 
 \RequirePackage{subcaption}
-
-\RequirePackage{mathtools}
 
 %impnattypo requires xcolor
 %\RequirePackage[]{xcolor}
