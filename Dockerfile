@@ -69,4 +69,5 @@ RUN tlmgr install \
     bookmark \
     babel-polish \
     selnolig \
-    pdflscape
+    pdflscape \
+    polski
