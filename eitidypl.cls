@@ -51,7 +51,7 @@
 
 \LoadClass[11pt]{\@baseclass} %report
 
-\RequirePackage{polski}
+%\RequirePackage{polski}
 
 \RequirePackage{hyperref}
 
