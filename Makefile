@@ -14,6 +14,7 @@ paper:
 	@pandoc $(addopts) \
 		--listings \
 		-f markdown \
+		--quiet \
 		--filter=pandoc-xnos \
 		--bibliography=bib/dsr.bib \
 		--bibliography=bib/architecture.bib \
