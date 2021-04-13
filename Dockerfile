@@ -69,4 +69,5 @@ RUN tlmgr install \
     nextpage \
     bookmark \
     selnolig \
-    pdflscape
+    pdflscape \
+    babel-polish
