@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+out=${1:-../out.pdf}
+personal_dir=${2:-personal}
+
+src_path=$(cd "$(dirname "$0")"; pwd)
+
+(cd "$personal_dir" \
+  && pandoc \
+    --listings \
+    -f markdown \
+    --filter=pandoc-xnos \
+    --bibliography=bib/dsr.bib \
+    --bibliography=bib/architecture.bib \
+    --bibliography=bib/practical_measurement.bib \
+    --top-level-division=chapter \
+    --metadata xnos-warning-level=1 \
+    meta.yaml \
+    labels.tex \
+    "$src_path"/frontmatter.tex \
+    *.md \
+    --pdf-engine=lualatex \
+    -t latex \
+    -o "$out")
