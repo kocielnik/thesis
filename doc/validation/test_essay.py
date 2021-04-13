@@ -34,9 +34,6 @@ def count_pages():
 
     return pdf.getNumPages()
 
-# def spell_check():
-#    "aspell -c source.md -d pl"
-
 pages = count_pages()
 
 # Set error flag value.
@@ -44,12 +41,8 @@ goal = -1
 
 goal_file_path = os.path.join(script_path, 'goal')
 
-try:
-    f = open(goal_file_path, 'r')
+with open(goal_file_path, 'r') as f:
     goal_str = f.readline(10)
-except:
-    print("File could not be found.")
-finally:
     f.close()  # Avoid leaking the file descriptor.
 
 goal = int(goal_str)
@@ -59,7 +52,7 @@ success_msg = success_msg + str(goal) + " that you wanted today!"
 
 print("Your daily goal for today was:", goal, "pages.")
 
-if pages >= goal:
+if pages > goal:
     print(success_msg)
 else:
     print("You now have", pages, "pages. Way to go!")

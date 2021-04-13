@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Install dependencies.
-
-pip install --user pytest pypdf

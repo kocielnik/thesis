@@ -7,13 +7,13 @@ pandoc \
 	--listings \
 	-f markdown \
 	--filter=pandoc-xnos \
-	--bibliography=bib/dsr.bib \
-	--bibliography=bib/architecture.bib \
-	--bibliography=bib/practical_measurement.bib \
+	--bibliography="$personal_dir"/bib/dsr.bib \
+	--bibliography="$personal_dir"/bib/architecture.bib \
+	--bibliography="$personal_dir"/bib/practical_measurement.bib \
 	--top-level-division=chapter \
 	--resource-path=:"$personal_dir":"$personal_dir"/infocard \
   --metadata xnos-warning-level=1 \
-	meta.yaml \
+	"$personal_dir"/meta.yaml \
 	"$personal_dir"/labels.tex \
 	frontmatter.tex \
 	"$personal_dir"/*.md \
