@@ -12,6 +12,9 @@ author: Bruce Wayne
 streszczenie: |
     Celem tej pracy jest zaprojektowanie i udostępnienie prototypu rozwiązania problemu zdalnej akwizycji informacji o wzorcach, występujących w danych prawnie klasyfikowanych jako wrażliwe. Cel ten motywowany jest minimalizacją powierzchni ataku na dane natury osobistej, a także ograniczeniem kosztów dodatkowej infrastruktury potrzebnej dostawcy do wdrożenia usługi. Proponowany model osiąga to poprzez zaangażowanie odbiorcy, który zyskuje w ten sposób dodatkowe możliwości. W pracy przedstawiono architekturę opracowaną na potrzeby celu szczegółowego w postaci automatycznej certyfikacji elastycznych odbiorców energii elektrycznej. Dla osiągnięcia celu użyto autorskich algorytmów zaprojektowanych z użyciem wzorców programowania asynchronicznego i współbieżnego, oraz ich prototypowych implementacji. \keywords{DSR, pomiar elastyczności, architektura, programowanie asynchroniczne.}
 
+rokegz: 2021r.
+nralbumu: 1
+
 # Citations and references.
 csl: ieee.csl
 link-citations: true
