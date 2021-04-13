@@ -3,7 +3,7 @@ image: registry.gitlab.com/wut-pw/dyplom-pro
 pages:
   stage: deploy
   script:
-  - mkdir public && ./generate && cp src/index.html out.pdf public
+  - mkdir public && src/generate && cp src/index.html out.pdf public
   artifacts:
     paths:
     - public
