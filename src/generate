@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-out=${1:-../out.pdf}
-personal_dir=${2:-personal}
-
 src_path=$(cd "$(dirname "$0")"; pwd)
+
+personal_dir=${2:-"$src_path"/..}
+out=${1:-"$personal_dir"/out.pdf}
 
 (cd "$personal_dir" \
   && pandoc \
@@ -18,7 +18,7 @@ src_path=$(cd "$(dirname "$0")"; pwd)
     meta.yaml \
     labels.tex \
     "$src_path"/frontmatter.tex \
-    *.md \
+    tresc.md \
     --pdf-engine=lualatex \
     -t latex \
     -o "$out")

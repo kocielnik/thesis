@@ -176,7 +176,7 @@
 %\PassOptionsToPackage{final}{graphicx}
 %\RequirePackage{graphicx}
 \usepackage{graphicx}
-\graphicspath{{../src/images/}, {img/}}
+\graphicspath{{src/images/}, {img/}}
 
 \RequirePackage{mathtools}
 
