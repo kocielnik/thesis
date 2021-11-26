@@ -1,12 +1,18 @@
 # Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
 
+Praca magisterska w formacie gotowym do obrony na EiTI PW, prosto ze źródeł w
+Markdown. Bez konieczności użycia Worda (bo drogi i czasami nieprzewidywalny)
+ani LaTeXa.
+
+Tak piszą pragmatyczni programiści!
+
 > Rozwijamy książki podobnie, jak oprogramowanie: wszystko jest pod nadzorem
 > systemu kontroli wersji, a wszystkie książki pisane są w składni Markdown
 > albo w języku XML.
 
 -- Autorzy książki "The Pragmatic Programmer" o swoim wydawnictwie
 
-Użycie: 
+Użycie:
 
 *Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
 
