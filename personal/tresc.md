@@ -123,6 +123,10 @@ Warto zwrócić uwagę, iż opracowana architektura może być użyta do szacowa
 
 Zaprojektowanie rozwiązania odpowiadającego postawionym kryteriom okazało się możliwe, a przygotowany prototyp potwierdził działanie rozwiązania w zamierzony sposób.
 
+# Źródła
+
+1. https://github.com/dnadales/nix-latex-template
+
 # Literatura {-}
 
 \setlength{\parindent}{0em}
