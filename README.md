@@ -40,3 +40,5 @@ is as follows:
 1. https://www.docverter.com/
 2. Authorea.com
 3. Self-hosted from https://github.com/mrded/pandoc-as-a-service
+
+Hello, world!
