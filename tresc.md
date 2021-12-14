@@ -125,6 +125,10 @@ $$ y = mx + b $$ {#eq:fi}
 
 Zaprojektowanie rozwiązania odpowiadającego postawionym kryteriom okazało się możliwe, a przygotowany prototyp potwierdził działanie rozwiązania w zamierzony sposób.
 
+# Źródła
+
+1. https://github.com/dnadales/nix-latex-template
+
 # Literatura {-}
 
 \setlength{\parindent}{0em}
