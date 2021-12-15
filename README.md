@@ -1,4 +1,4 @@
-# Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
+# Praca dyplomowa z pliku .md w 60 sekund, z podglądem PDF gotowym do wydruku
 
 Praca magisterska w formacie gotowym do obrony na EiTI PW, prosto ze źródeł w
 Markdown. Bez konieczności użycia Worda (bo drogi i czasami nieprzewidywalny)
