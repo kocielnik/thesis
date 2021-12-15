@@ -1,44 +1,101 @@
-# Usage
+# Szablon pracy magisterskiej w Markdown dla wydziału EiTi Politechniki Warszawskiej
 
-Write your thesis in the following format:
+Praca magisterska w formacie gotowym do obrony na EiTI PW, prosto ze źródeł w
+Markdown. Bez konieczności użycia Worda (bo drogi i czasami nieprzewidywalny)
+ani LaTeXa.
 
-```markdown
----
-title: Thesis Title
-author: Your Name
-university: Your University
----
+Tak piszą pragmatyczni programiści!
 
-# Introduction
+> Rozwijamy książki podobnie, jak oprogramowanie: wszystko jest pod nadzorem
+> systemu kontroli wersji, a wszystkie książki pisane są w składni Markdown
+> albo w języku XML.
 
-This thesis has been written using a \keyword{DTP} package called Dyplom-Pro
-[^k_dyplom-pro_2019].
+-- Autorzy książki "The Pragmatic Programmer" o swoim wydawnictwie
 
-```
+Użycie:
 
-Save it to file `thesis.md`, then to generate the PDF output, issue:
+*Przykładowy dokument wyjściowy: [out.pdf](out.pdf)*
 
-```bash
-pandoc -f markdown -t latex -o thesis.pdf thesis.md
-```
+W pakiecie:
 
-For more details on how to use this package, refer to the [guide](guide.md).
+1. Szablon z formatowaniem gotowym do użycia w pracy magisterskiej,
+    - Bardziej aktualny szablon pracy dyplomowej dla EiTI PW tu:
+    [WUT-Thesis](https://github.com/ArturB/WUT-Thesis)
+2. Proste użycie poprzez mechanizm `documentclass` systemu LaTeX.
+3. Kompilacja jedną komendą w kilka sekund dla pracy liczącej 90 stron.
+   Podobne zadanie narzędzia dedykowane dla systemu LaTeX wykonują w ciągu od
+   60 do 120 sekund.
 
-# Usage without installing Pandoc
+Więcej informacji o przygotowywaniu pracy dyplomowej na WEiTI: [Poradnik dyplomanta](http://www.ii.pw.edu.pl/ii_pol/Instytut-Informatyki/Nauczanie/Poradnik-dyplomanta).
 
-You can use an online tool to generate LaTeX from Markdown. Then you can paste
-the LaTeX source to your LaTeX project, eg. on Overleaf. The summary of steps
-is as follows:
+**Nie** oferuje (i na razie nie powinien oferować):
 
-1. Write thesis text in Markdown
-2. Generate LaTeX from Markdown using
-   https://pandoc.org/try/?from=markdown&to=latex
-3. Include LaTeX in the example project as main.tex.
+1. Szablonu dla pracy *inżynierskiej*,
+2. Czegokolwiek ponad to, co oferuje.
 
-# Other options to get LaTeX from Markdown
+Wymagania do kompilacji
+-----------------------
 
-1. https://www.docverter.com/
-2. Authorea.com
-3. Self-hosted from https://github.com/mrded/pandoc-as-a-service
+Pandoc i LuaLaTex.
 
-Hello, world!
+Korzystanie
+--------------
+
+1. `sudo ./configure`,
+2. `make`,
+3. `make show`.
+
+Będzie zapewne dużo błędów po drodze.
+
+Gdyby ktoś chciał fiksy dla tych błędów włączyć do procedury konfiguracji środowiska w pliku `configure` - może zgłosić *pull request*, ale tylko jeśli nowa wersja będzie kompatybilna z systemem Fedora *oraz* Ubuntu.
+
+Struktura repozytorium
+----------------------
+
+Definicja formatu pracy:
+
+- Plik `eitidypl.cls`.
+
+Twoja wersja robocza:
+
+- Plik `meta.yaml` ze spersonalizowaną konfiguracją Pandoca,
+- Katalog `personal`, a w nim:
+  - Plik `labels.tex` z metadanymi pracy (tytuł, autor, streszczenie),
+  - Plik `.md` z treścią pracy, oraz
+  - Katalog `img` na obrazki do pracy.
+
+Proces edycji (REPL)
+--------------------
+
+Uwaga: pojęcie "tekst" w odniesieniu do pracy oznacza *wszystkie* pliki z rozszerzeniem`.md` w katalogu `personal` - porównaj z linią `in=*.md` w pliku `Makefile`.
+
+1. `make ed` by wyświetlić tekst [^tekst] do edycji (edytor ustawiasz w pliku `Makefile`),
+2. `make` by wprowadzić zmiany do pliku wyjściowego w PDF,
+3. `make show` by zobaczyć plik wyjściowy,
+4. */rinse and repeat/*.
+
+Opcje klasy
+-----------
+
+- `strict` - tylko czcionki bezszeryfowe, jak w rozporządzeniu (może nie działać),
+- `draft` - znak wodny "draft" na każdej stronie.
+
+Bonus: TDD (TDW)
+-----------------------
+
+> Write now, edit later.
+
+W katalogu `validation` znajduje się plik `goal`.
+
+Można w nim umieścić docelową liczbę stron do napisania w pracy.
+
+Sprawdzenia dokonujemy komendą `make test`.
+
+*For best effects, use regularly in small doses.*
+
+Credits 
+-------
+
+1. Initial work: Jakub Schmidtke: `sjakub@gmail.com`,
+2. Further improvements: Mikolaj Kowalski: `cmosqt@gmail.com`,
+3. Refactoring and yet further improvements: Patryk Kocielnik: `dev@kocielnik.pl`.

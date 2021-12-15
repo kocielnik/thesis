@@ -5,14 +5,22 @@ documentclass: eitidypl
 
 author: Bruce Wayne
 
-# > Pierwszym zdaniem każdej pracy powinno być: "Celem tej pracy jest..."
-#
-# -- Marcin Kosiński, [^kosinski_porady_2016]
-
 streszczenie: |
-    Celem tej pracy jest zaprojektowanie i udostępnienie prototypu rozwiązania problemu zdalnej akwizycji informacji o wzorcach, występujących w danych prawnie klasyfikowanych jako wrażliwe. Cel ten motywowany jest minimalizacją powierzchni ataku na dane natury osobistej, a także ograniczeniem kosztów dodatkowej infrastruktury potrzebnej dostawcy do wdrożenia usługi. Proponowany model osiąga to poprzez zaangażowanie odbiorcy, który zyskuje w ten sposób dodatkowe możliwości. W pracy przedstawiono architekturę opracowaną na potrzeby celu szczegółowego w postaci automatycznej certyfikacji elastycznych odbiorców energii elektrycznej. Dla osiągnięcia celu użyto autorskich algorytmów zaprojektowanych z użyciem wzorców programowania asynchronicznego i współbieżnego, oraz ich prototypowych implementacji. \keywords{DSR, pomiar elastyczności, architektura, programowanie asynchroniczne.}
+  Celem tej pracy jest zaprojektowanie i udostępnienie prototypu rozwiązania
+  problemu zdalnej akwizycji informacji o wzorcach, występujących w danych
+  prawnie klasyfikowanych jako wrażliwe. Cel ten motywowany jest minimalizacją
+  powierzchni ataku na dane natury osobistej, a także ograniczeniem kosztów
+  dodatkowej infrastruktury potrzebnej dostawcy do wdrożenia usługi.
+  Proponowany model osiąga to poprzez zaangażowanie odbiorcy, który zyskuje w
+  ten sposób dodatkowe możliwości. W pracy przedstawiono architekturę
+  opracowaną na potrzeby celu szczegółowego w postaci automatycznej
+  certyfikacji elastycznych odbiorców energii elektrycznej. Dla osiągnięcia
+  celu użyto autorskich algorytmów zaprojektowanych z użyciem wzorców
+  programowania asynchronicznego i współbieżnego, oraz ich prototypowych
+  implementacji. \keywords{DSR, pomiar elastyczności, architektura,
+  programowanie asynchroniczne.}
 
-rokegz: 2021r.
+rokegz: 2022r.
 nralbumu: 1
 
 # Citations and references.
@@ -32,14 +40,4 @@ fignos-plus-name: Rys.
 # Equation captioning.
 eqnos-cleveref: True
 eqnos-eqref: True
-
-# Źródła
-#
-# > Prowadziłem lub recenzowałem kilkadziesiąt prac dyplomowych na wydziałach MiNI PW i MIM UW. (...) Znaj swój cel! Pierwszym zdaniem każdej pracy powinno być: 'Celem tej pracy jest....'. Ułatwisz w ten sposób życie sobie i recenzentowi. Tobie łatwiej będzie pamiętać po co tę pracę robisz.
-#
-# -- Marcin Kosiński, "Praca Dyplomowa" [^kosinski_porady_2016]
-#
-# [^kosinski_porady_2016]: [Praca dyplomowa](https://github.com/mi2-warsaw/DobreRady/blob/master/praca_dyplomowa.md)
-# [^misiurewicz_pisanie_2017]: Efekty kształcenia dla pracy magisterskiej, w: Jacek Misiurewicz - [Pisanie pracy dyplomowej - metody i narzędzia](http://staff.elka.pw.edu.pl/~jmisiure/sdm2/sdm2_prezentacja_v3.pdf)
-
 ---
