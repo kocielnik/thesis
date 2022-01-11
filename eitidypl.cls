@@ -45,6 +45,9 @@
 
 \ProcessOptions
 
+\newif\ifcustomtitlepage
+\customtitlepagefalse
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\@baseclass{report}
 \PassOptionsToClass{11pt,twoside,a4paper,draft}{\@baseclass} %report

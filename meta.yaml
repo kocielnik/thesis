@@ -23,6 +23,8 @@ streszczenie: |
 rokegz: 2022r.
 nralbumu: 1
 
+customtitlepage: true
+
 # Citations and references.
 csl: ieee.csl
 link-citations: true
