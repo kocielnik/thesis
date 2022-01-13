@@ -1,8 +1,6 @@
 ---
 lang: pl
 
-documentclass: eitidypl
-
 author: Bruce Wayne
 
 streszczenie: |
@@ -32,6 +30,9 @@ bibliography: # refs.bib
 - bib/architecture.bib
 - bib/components.bib
 - bib/practical_measurement.bib
+
+documentclass: eitidypl
+customtitlepage: true
 
 # Figure captioning.
 fignos-caption-name: Rys.
