@@ -5,6 +5,14 @@ src_path=$(cd "$(dirname "$0")"; pwd)
 personal_dir=${2:-"$src_path"/..}
 out=${1:-"$personal_dir"/out.pdf}
 
+(cd "$src_path" \
+  && pandoc \
+    -f markdown \
+    --template frontmatter-template.tex \
+    ../meta.yaml \
+    -o frontmatter.tex
+)
+
 (cd "$personal_dir" \
   && pandoc \
     --listings \

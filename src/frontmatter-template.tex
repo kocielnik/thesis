@@ -1,0 +1,20 @@
+$if(title)$
+\tytul{$title$}
+$endif$
+
+$if(draft)$
+\clearpage
+\includepdf[pages=-]{test/recenzja-nowy-formularz.pdf}
+\section*{Najnowsze zmiany w projekcie}
+\thispagestyle{empty}
+$endif$
+
+\maketitle
+\makeinfo
+\makeabstracts
+
+\thispagestyle{empty}
+\cleartooddpage
+\tableofcontents
+
+\cleartooddpage
