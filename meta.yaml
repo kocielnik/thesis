@@ -33,6 +33,8 @@ bibliography: # refs.bib
 
 documentclass: eitidypl
 customtitlepage: true
+infocard: true
+abstracts: true
 
 # Figure captioning.
 fignos-caption-name: Rys.

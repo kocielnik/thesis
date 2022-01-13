@@ -13,8 +13,13 @@ $if(customtitlepage)$
 \maketitle
 $endif$
 
+$if(infocard)$
 \makeinfo
+$endif$
+
+$if(abstracts)$
 \makeabstracts
+$endif$
 
 \thispagestyle{empty}
 \cleartooddpage
