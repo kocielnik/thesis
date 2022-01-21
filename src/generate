@@ -24,7 +24,6 @@ out=${1:-"$personal_dir"/out.pdf}
     --top-level-division=chapter \
     --metadata xnos-warning-level=1 \
     meta.yaml \
-    labels.tex \
     "$src_path"/frontmatter.tex \
     tresc.md \
     --pdf-engine=lualatex \

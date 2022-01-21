@@ -314,6 +314,8 @@
 	\setcounter{footnote}{0}
 }
 
+\newcommand\secskip{\\[3mm]}
+
 \newcommand\makebio{
   \pagenumbering{roman}
 	\begin{titlepage}
