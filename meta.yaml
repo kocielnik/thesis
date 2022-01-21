@@ -1,7 +1,7 @@
 ---
 lang: pl
 
-autor: Bruce Wayne
+author: Bruce Wayne
 
 tytul: Automatyczny sposób ewaluacji przestępstw
 
@@ -20,10 +20,10 @@ streszczenie: |
   wzorców programowania asynchronicznego i współbieżnego, oraz ich
   prototypowych implementacji.
 
-slowakluczowe: |
+keywords: |
   DSR, pomiar elastyczności, architektura, programowanie asynchroniczne.
 
-rokegz: 2022r.
+date: 2022
 nralbumu: 1
 
 # Citations and references.
