@@ -4,6 +4,7 @@ stages:
 
 build_docker_image:
   stage: build
+  image: docker:latest
   script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_KEY
     - docker build --layers -t registry.gitlab.com/wut-pw/dyplom-pro - < src/Dockerfile
