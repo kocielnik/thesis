@@ -1,25 +1,7 @@
-stages:
-  - build
-  - pages
-
-build_docker_image:
-  stage: build
-  image: docker:latest
-  script:
-    - docker login registry.gitlab.com -u $REGISTRY_USER -p $REGISTRY_KEY
-    - docker build --layers -t registry.gitlab.com/wut-pw/dyplom-pro - < src/Dockerfile
-    - docker push registry.gitlab.com/wut-pw/dyplom-pro
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - src/Dockerfile
-    refs:
-      - master
-      - 1
+image: registry.gitlab.com/wut-pw/dyplom-pro
 
 pages:
-  stage: pages
-  image: registry.gitlab.com/wut-pw/dyplom-pro
+  stage: deploy
   script:
   - mkdir public && src/generate && cp src/index.html out.pdf public
   artifacts:
